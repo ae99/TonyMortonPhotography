@@ -1,0 +1,62 @@
+/*http://tympanus.net/codrops/2013/06/18/thumbnailCaption-hover-effects/*/
+.gallery {
+    a {
+        overflow: hidden;
+        margin: 1rem;
+        position: relative;
+        max-width: 400px;
+        padding: 0;
+        border: 5px solid #EEEEEE;
+        border-radius: 5px;
+        cursor: zoom-in;
+        display: block;
+//        width: 100%;
+
+        img {
+            max-width: 100%;
+            display: block;
+            position: relative;
+            transition: transform 0.4s;
+        }
+
+        &:hover img{
+            transform: translateY(-2rem);
+        }
+        
+        h3 {
+            margin: 0;
+            font-family: Roboto-Thin; //TODO
+            font-weight: 400;
+            position: absolute;
+            left: 0;
+            background: #EEEEEE;
+            color: #424242;
+            width: 100%;
+            max-width: 100%;
+            top: auto;
+            bottom: 0;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: transform 0.4s, opacity 0.1s 0.3s;
+            text-align: center;
+            text-transform: capitalize;
+            font-size: 1.5rem;
+            padding: 1rem 0;
+
+        }
+        
+        &:hover h3 {
+            opacity: 1;
+            transform: translateY(0px);
+            transition: transform 0.4s, opacity 0.1s;    
+        }
+    }
+}
+
+.photo {
+    color: white;
+    img {
+        max-width: 100vw;
+        max-height: 100vh%;
+    }
+}

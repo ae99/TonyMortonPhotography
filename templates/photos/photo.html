@@ -1,0 +1,28 @@
+{% extends 'photos/base.html' %}
+{% load staticfiles %}
+
+{% block head_block %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static "/styles/gallery.css" %}" />
+
+    <script src="{% static '/scripts/gallery.js' %}"></script>
+
+{% endblock %}
+
+{% block header_nav_block %}
+<!-- NoNav -->
+{% endblock %}
+
+{% block body_block %}
+<div class="photo">
+    <details>
+        {{photo.name}}
+    </details>
+    
+	<img src="/media/web/{{photo.filename}}.jpg">
+</div>
+{% endblock %}
+
+{% block footer_block %}
+<!-- NoFooter -->
+{% endblock %}
