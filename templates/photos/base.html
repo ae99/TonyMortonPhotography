@@ -24,7 +24,7 @@
                 <a href="index.php">Home</a>
                 <a href="gallery.php">Gallery</a>
                 {% if user.is_authenticated %}
-                <a href="index.php">Submit Image</a>
+                <a href="{% url 'addPhoto' %}">Submit Image</a>
                 {% endif %}
             </nav>
             {% endblock %}
@@ -50,7 +50,7 @@
                 <a href="index.php">Home</a>
                 <a href="gallery.php">Gallery</a>
                 {% if user.is_authenticated %}
-                <a href="index.php">Admin Page</a>
+                <a href="/admin/">Admin Page</a>
                 {% else %}
                 <a href="index.php">Login</a>
                 {% endif %}

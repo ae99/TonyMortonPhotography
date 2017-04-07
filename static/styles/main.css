@@ -1,15 +1,17 @@
-/* line 1, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+/* line 1, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 * {
   box-sizing: border-box; }
 
-/* line 5, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+/* line 5, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 html, body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%; }
 
-/* line 12, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+/* line 14, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 header > nav {
   height: 3rem;
   width: 100%;
@@ -17,7 +19,7 @@ header > nav {
   text-align: center;
   position: absolute;
   z-index: 100; }
-  /* line 21, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+  /* line 23, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   header > nav a {
     display: inline-block;
     color: #fff;
@@ -27,11 +29,11 @@ header > nav {
     font-weight: 200;
     padding: 0 2rem;
     transition: all .2s; }
-    /* line 30, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+    /* line 32, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     header > nav a:hover {
       color: rgba(255, 255, 255, 0.6); }
 
-/* line 36, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+/* line 38, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 header > section.full {
   height: 100vh;
   width: 100%;
@@ -40,7 +42,7 @@ header > section.full {
   top: 0;
   z-index: -50;
   text-align: center; }
-  /* line 45, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+  /* line 47, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   header > section.full .fadein > .bg {
     width: 100%;
     height: 100%;
@@ -48,10 +50,10 @@ header > section.full {
     left: 0;
     opacity: 1;
     transition: all 1.5s; }
-  /* line 54, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+  /* line 56, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   header > section.full .hidden {
     opacity: 0; }
-  /* line 58, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+  /* line 60, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   header > section.full h1 {
     margin: none;
     font-family: "Roboto-Thin";
@@ -63,7 +65,7 @@ header > section.full {
     -webkit-font-smoothing: antialiased;
     bottom: 20%;
     right: 10%; }
-  /* line 72, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+  /* line 74, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   header > section.full .gradient {
     height: 50%;
     width: 100%;
@@ -72,19 +74,19 @@ header > section.full {
     background: linear-gradient(to top, black, transparent);
     z-index: 25; }
 
-/* line 82, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+/* line 84, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 header > div.full {
   height: 100vh;
   width: 100vw;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 70%, black 100%); }
 
-/* line 88, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+/* line 90, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 main {
   background-color: #000;
   padding: 3rem 1rem;
   width: 100%; }
 
-/* line 94, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+/* line 96, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 footer {
   width: 100%;
   padding: 0 2rem;
@@ -92,32 +94,32 @@ footer {
   background-color: #424242;
   font-weight: 200;
   box-shadow: inset -1px 14px 21px -10px rgba(0, 0, 0, 0.5); }
-  /* line 104, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+  /* line 106, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   footer nav {
     float: left; }
-    /* line 106, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+    /* line 108, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     footer nav a {
       color: #BDBDBD;
       text-decoration: none;
       padding: 0 1rem;
       line-height: 5rem; }
-  /* line 114, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+  /* line 116, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   footer div {
     float: right;
     height: 5rem;
     padding: 0.5rem 0;
     color: #EEEEEE; }
-    /* line 119, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+    /* line 121, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     footer div span {
       display: block;
       line-height: 2rem; }
-    /* line 124, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+    /* line 126, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     footer div hr {
       color: #BDBDBD;
       margin: 0;
       width: 120%;
       margin-left: -10%; }
-    /* line 131, /Users/alexanderedwards/Desktop/TMP Transfer/TMP/static/styles/main.scss */
+    /* line 133, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     footer div a {
       color: white; }
 
