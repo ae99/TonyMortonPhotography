@@ -1,3 +1,9 @@
+function showModal(url) {
+    $.get(url, function( data ) {
+      $( "body" ).append( data );
+    });  
+};
+
 $(document).ready(function () {
  	var $grid = $('.gallery').masonry({
 		itemSelector: 'a',

@@ -1,28 +1,17 @@
-{% extends 'photos/base.html' %}
-{% load staticfiles %}
+<div class="modal">
+            <img src="/media/web/{{photo.filename}}.jpg">
+            <div class="fullCaption">
+                <span class="name">{{photo.name}}</span>
 
-{% block head_block %}
-    
-    <link rel="stylesheet" type="text/css" href="{% static "/styles/gallery.css" %}" />
+                <br>
 
-    <script src="{% static '/scripts/gallery.js' %}"></script>
+                <span class="settings"><i class="camera_icon icon_camera"></i>${x.camera} w/${x.lens}<i class="camera_icon icon_focal_length"></i>
+                ${x.focal_length}<i class="camera_icon icon_aperture"></i> ƒ/{{photo.aperture}}<i class="camera_icon icon_exposure_time"></i> ${x.exposure_time}<i class="camera_icon icon_iso"></i>${x.iso}
 
-{% endblock %}
+                </span>
+            </div>
 
-{% block header_nav_block %}
-<!-- NoNav -->
-{% endblock %}
-
-{% block body_block %}
-<div class="photo">
-    <details>
-        {{photo.name}}
-    </details>
-    
-	<img src="/media/web/{{photo.filename}}.jpg">
-</div>
-{% endblock %}
-
-{% block footer_block %}
-<!-- NoFooter -->
-{% endblock %}
+            <svg onclick="$('.modal').remove()" viewBox="0 0 70 70" width="70" height="70" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                <rect class="one" height="8" width="60" y="31" x="5" fill="#FFFFFF"></rect>                <rect class="two" height="8" width="60" y="31" x="5" fill="#FFFFFF"></rect>
+           </svg>
+    </div> 

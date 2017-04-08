@@ -13,12 +13,8 @@ import json
 
 def index(request):
     tags_list = Tag.objects.all()
-    photo_list = Photo.objects.all()[:20]
-    photo_dict = [ obj.as_dict() for obj in photo_list ]
-    print(photo_dict)
-    photo_json = json.dumps(photo_dict)
-    
-    context_dict = {'tags': tags_list, 'photos': photo_list, 'json': photo_json}
+    photo_list = Photo.objects.all()[:20]    
+    context_dict = {'tags': tags_list, 'photos': photo_list}
     return render(request, 'photos/index.html', context=context_dict)
 
 

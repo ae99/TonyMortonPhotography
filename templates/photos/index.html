@@ -48,7 +48,7 @@
 {% block body_block %}
     <section class="gallery">
     {% for photo in photos %}
-        <a href="/gallery/{{photo.slug}}">
+        <a href="#" onclick="showModal('/gallery/{{photo.slug}}')">
             <img src="/media/thumb/{{ photo.filename }}.jpg">
             <h3 class="thumbnailCaption">
                 {{ photo.name }}
