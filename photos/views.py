@@ -1,69 +1,59 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 
-from photos.models import Tag, Photo
+from photos.models import Category, Photo
 
-from photos.forms import PhotoForm
+from photos.forms import NewPhotoForm, EditPhotoForm
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 
-import json
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def index(request):
-    tags_list = Tag.objects.all()
-    photo_list = Photo.objects.all()[:20]    
-    context_dict = {'tags': tags_list, 'photos': photo_list}
-    return render(request, 'photos/index.html', context=context_dict)
+    photos_all = Photo.objects.all()
+    paginator = Paginator(photos_all, 2)
+    page = request.GET.get('page', '1')
+
+    try:
+        photos = paginator.page(page)
+    except PageNotAnInteger:
+        photos = paginator.page(1)
+    except EmptyPage:
+        photos = paginator.page(paginator.num_pages)
+
+    return render(request, 'photos/index.html', {'photos': photos})
 
 
 def about(request):
     return render(request, 'photos/about.html')
 
-def show_photo(request, photo_name_slug):
-    context_dict = {}
 
-    try:
-        photo = Photo.objects.get(slug=photo_name_slug)
+def show_photo(request, photo_id):
+    return render(request, 'photos/photo.html', {'photo': get_object_or_404(Photo, id=photo_id)})
 
-        context_dict['photo'] = photo
-    except Tag.DoesNotExist:
-        context_dict['photo'] = None
-
-    return render(request, 'photos/photo.html', context_dict)
-
-
-def show_tag(request, tag_name_slug):
-    context_dict = {}
-
-    try:
-        tag = Tag.objects.get(slug=tag_name_slug)
-
-        photos = Photo.objects.filter(tag=tag)
-
-        context_dict['photos'] = photos
-        context_dict['tag'] = tag
-    except Tag.DoesNotExist:
-        context_dict['photos'] = None
-        context_dict['tag'] = None
-
-    return render(request, 'photos/tag.html', context_dict)
 
 @login_required
-def add_photo(request):
+def newPhoto(request):
     if request.method == 'POST':
-        form = PhotoForm(request.POST, request.FILES)
+        form = NewPhotoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return index(request)
-        else:
-            print(form.errors)
+            return redirect(reverse('editPhoto') + "?id=" + form.instance.id)
     else:
-        form = PhotoForm()
+        form = NewPhotoForm()
+    return render(request, 'photos/newPhoto.html', {'form': form})
 
-    context_dict = {'form': form}
-    return render(request, 'photos/addPhoto.html', context_dict)
+@login_required
+def editPhoto(request):
+    photo_id = request.GET.get('id', '')
+    instance = get_object_or_404(Photo, id=photo_id)
+    form = EditPhotoForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        form.save()
+        return redirect(reverse('index'))
+    return render(request, 'photos/editPhoto.html', {'photo': instance, 'form': form})
 
 
 def user_login(request):

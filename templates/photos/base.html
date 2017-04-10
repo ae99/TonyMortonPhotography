@@ -23,7 +23,7 @@
                 <a href="index.php">Home</a>
                 <a href="mailto:tmorton1@bigpond.com ">Contact</a>
                 {% if user.is_authenticated %}
-                <a href="{% url 'addPhoto' %}">Submit Image</a>
+                <a href="{% url 'newPhoto' %}">Submit Image</a>
                 {% endif %}
             </nav>
             {% endblock %}

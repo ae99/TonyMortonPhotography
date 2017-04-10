@@ -2,13 +2,12 @@ from django import forms
 from photos.models import Photo
 
 
-class PhotoForm(forms.ModelForm):
-    name = forms.CharField(max_length=128,
-                           help_text="Please enter the name of this image.",
-                           )
-
-    source = forms.ImageField()
-
+class NewPhotoForm(forms.ModelForm):
     class Meta:
         model = Photo
-        fields = ('name', 'source', 'tag')
+        fields = ('name', 'source')
+
+class EditPhotoForm(forms.ModelForm):
+    class Meta:
+        model = Photo
+        exclude = ('id',)

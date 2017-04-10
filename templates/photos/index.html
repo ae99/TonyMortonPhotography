@@ -10,9 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static "/styles/gallery.css" %}" />
 
     <script src="{% static '/scripts/gallery.js' %}"></script>
-    <script>
-        var json = {{json|safe}};
-        
+    <script>        
         $(document).ready(function(){
             $(window).scroll(function() {
                 $('header>section.full').each(function(r) {
@@ -48,12 +46,34 @@
 {% block body_block %}
     <section class="gallery">
     {% for photo in photos %}
-        <a href="#" onclick="showModal('/gallery/{{photo.slug}}')">
-            <img src="/media/thumb/{{ photo.filename }}.jpg">
+        <a href="#" onclick="showModal('/photo/{{photo.id}}')">
+            <img src="/media/thumb/{{ photo.id }}.jpg">
             <h3 class="thumbnailCaption">
                 {{ photo.name }}
             </h3>
         </a>
     {% endfor %}
     </section>
+    <div>
+        {% if photos.has_previous %}
+            <a href="?page={{ photos.previous_page_number }}">previous</a>
+        {% else %}
+            previous
+        {% endif %}
+
+         {% for i in photos.paginator.page_range %}
+            {% if photos.number == i %}
+                <span>{{ i }}</span>
+            {% else %}
+                <a href="?page={{ i }}">{{ i }}</a> 
+            {% endif %}
+        {% endfor %}
+
+        {% if photos.has_next %}
+            <a href="?page={{ photos.next_page_number }}">next</a>
+        {% else %}
+            next
+        {% endif %}
+    </div>
+
 {% endblock %}

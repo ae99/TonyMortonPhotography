@@ -22,3 +22,14 @@ $(document).ready(function () {
 });
 
 
+//$(function() {
+//    $("a").click(function() {
+//        return someMethodName($(this).attr('href'));
+//    });
+//});
+//
+//function someMethodName(href)
+//{
+//    console.log(href);
+//    return false;
+//}

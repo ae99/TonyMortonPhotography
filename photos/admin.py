@@ -1,14 +1,5 @@
 from django.contrib import admin
+from photos.models import Category, Photo
 
-
-# Register your models here.
-from photos.models import Tag, Photo
-
-
-class TagAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug':('name',)}
-
-admin.site.register(Tag, TagAdmin)
-
-
+admin.site.register(Category)
 admin.site.register(Photo)

@@ -1,0 +1,18 @@
+{% extends 'photos/base.html' %}
+{% load staticfiles %}
+{% block head_block %}
+    <link rel="stylesheet" type="text/css" href="{% static "/styles/admin.css" %}" />
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+{% endblock %}
+
+
+{% block body_block %}
+    <form action="{% url 'editPhoto' %}?id={{ photo.id }}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="submit" value="Submit" />
+    </form>
+
+{% endblock %}
