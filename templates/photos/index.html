@@ -25,7 +25,7 @@
 
 {% block header_block %}
 <section class="full">
-    <h1>Tony Morton Photography</h1>
+    <h1>Tony Morton</h1>
     <div class="fadein">
         <div class="bg" id="1" style=
         "background: url({% static '/photos/1.jpg' %}) no-repeat top center; background-size: cover;">
@@ -39,7 +39,7 @@
     </div>
     <div class="gradient"></div>
 </section>
-<div class="full"></div>
+<div class="fullPush"></div>
 
 {% endblock %}
 
@@ -48,9 +48,7 @@
     {% for photo in photos %}
         <a href="#" onclick="showModal('/photo/{{photo.id}}')">
             <img src="/media/thumb/{{ photo.id }}.jpg">
-            <h3 class="thumbnailCaption">
-                {{ photo.name }}
-            </h3>
+            <h3 class="thumbnailCaption">{{ photo.name }}</h3>
         </a>
     {% endfor %}
     </section>

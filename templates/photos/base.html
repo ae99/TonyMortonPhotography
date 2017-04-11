@@ -44,10 +44,9 @@
         {% block footer_block %}
         <footer>
             <nav>
+                <a href="index.php">Home</a>
                 <a href="{% url 'about' %}">About</a>
                 <a href="mailto:tmorton1@bigpond.com ">Contact</a>
-                <a href="index.php">Home</a>
-                <a href="gallery.php">Gallery</a>
                 {% if user.is_authenticated %}
                 <a href="/admin/">Admin Page</a>
                 {% else %}
@@ -55,16 +54,12 @@
                 {% endif %}
             </nav>
             
-            <div>
-                <span id="line">
-                    Tony Morton © 2017
-                </span>
-                <hr>
-                <span>
-                    Built by <a href="https://alexedwards.xyz">Alex Edwards</a>.
-                </span>
-            </div>
-        
+            <span id="center">
+                Tony Morton © 2017
+            </span>
+            <span id="right">
+                Website by <a href="https://alexedwards.xyz">Alex Edwards</a>.
+            </span>
         </footer>
         {% endblock %}
     </body>
