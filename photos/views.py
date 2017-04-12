@@ -49,10 +49,15 @@ def newPhoto(request):
 def editPhoto(request):
     photo_id = request.GET.get('id', '')
     instance = get_object_or_404(Photo, id=photo_id)
-    form = EditPhotoForm(request.POST or None, instance=instance)
-    if form.is_valid():
-        form.save()
-        return redirect(reverse('index'))
+    
+    if request.method == 'POST':
+        form = EditPhotoForm(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('index'))
+    else:
+        form = EditPhotoForm(instance=instance)
+
     return render(request, 'photos/editPhoto.html', {'photo': instance, 'form': form})
 
 
