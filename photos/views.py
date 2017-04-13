@@ -11,20 +11,31 @@ from django.core.urlresolvers import reverse
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-def index(request):
-    photos_all = Photo.objects.all()
-    paginator = Paginator(photos_all, 2)
+def index(request, category=None):
+    if category == None:
+        photos_all = Photo.objects.all().order_by("-id")
+    else:
+        photos_all = Photo.objects.filter(category=category)
+    paginator = Paginator(photos_all, 5)
     page = request.GET.get('page', '1')
-
+    
+    category_list = Category.objects.all()
+    
     try:
         photos = paginator.page(page)
     except PageNotAnInteger:
         photos = paginator.page(1)
     except EmptyPage:
         photos = paginator.page(paginator.num_pages)
+    
+    showNav = paginator.num_pages >= 2
+        
+    
+    return render(request, 'photos/index.html', {'photos': photos, 'category':category, 'categories':category_list, 'showNav': showNav})
 
-    return render(request, 'photos/index.html', {'photos': photos})
-
+def category(request, category_slug):
+    category = get_object_or_404(Category, slug=category_slug)
+    return index(request, category)
 
 def about(request):
     return render(request, 'photos/about.html')

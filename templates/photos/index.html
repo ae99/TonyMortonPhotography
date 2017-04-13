@@ -39,11 +39,26 @@
     </div>
     <div class="gradient"></div>
 </section>
-<div class="fullPush"></div>
-
 {% endblock %}
 
 {% block body_block %}
+    <div class="categories">
+        {% if category is None %}
+            <span>All</span>
+        {% else %}
+            <span>{{category}}</span>
+        {% endif %}
+        <div class="items">
+            {% if category != None %}
+                <a href="{% url 'index' %}">All</a>
+            {% endif %}
+            {% for cat in categories %}
+                {% if cat != category %}
+                <a href="{% url 'category' category_slug=cat.slug %}">{{cat}}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
     <section class="gallery">
     {% for photo in photos %}
         <a href="#" onclick="showModal('/photo/{{photo.id}}')">
@@ -52,25 +67,27 @@
         </a>
     {% endfor %}
     </section>
-    <div>
-        {% if photos.has_previous %}
-            <a href="?page={{ photos.previous_page_number }}">previous</a>
-        {% else %}
-            previous
-        {% endif %}
-
-         {% for i in photos.paginator.page_range %}
-            {% if photos.number == i %}
-                <span>{{ i }}</span>
+    <div class="pageNumbers">
+        {% if showNav %}
+            {% if photos.has_previous %}
+                <a id="last" href="?page={{ photos.previous_page_number }}">Last Page</a>
             {% else %}
-                <a href="?page={{ i }}">{{ i }}</a> 
+                <span id="last">Last Page</span>
             {% endif %}
-        {% endfor %}
 
-        {% if photos.has_next %}
-            <a href="?page={{ photos.next_page_number }}">next</a>
-        {% else %}
-            next
+             {% for i in photos.paginator.page_range %}
+                {% if photos.number == i %}
+                    <a id="active" href="?page={{ i }}">{{ i }}</a>
+                {% else %}
+                    <a href="?page={{ i }}">{{ i }}</a> 
+                {% endif %}
+            {% endfor %}
+
+            {% if photos.has_next %}
+                <a id="next" href="?page={{ photos.next_page_number }}">Next Page</a>
+            {% else %}
+                <span id="next">Next Page</span>
+            {% endif %}
         {% endif %}
     </div>
 

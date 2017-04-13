@@ -4,6 +4,6 @@
   "sources": [
     "admin.scss"
   ],
-  "mappings": ";AAAA,AAAA,IAAI,CAAC;EACD,gBAAgB,EAAE,MAAO;EACzB,KAAK,EAAE,IAAK,GACf",
+  "mappings": ";AAAA,AAAA,IAAI,CAAC;EACD,gBAAgB,EAAE,MAAO;EACzB,KAAK,EAAE,IAAK;EACZ,WAAW,EAAE,IAAK,GACrB",
   "names": []
 }

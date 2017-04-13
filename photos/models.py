@@ -3,19 +3,24 @@ from TMP import settings
 from PIL import Image
 import PIL.ExifTags
 import datetime
+from django.template.defaultfilters import slugify
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
 
 
 class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
+    slug = models.SlugField(unique=True)
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)
+    
     class Meta:
         verbose_name_plural = "categories"
 
     def __str__(self):
         return self.name
-
 
 def getTimeHex():
     return str(hex(int(datetime.datetime.now().timestamp())))[2:]
