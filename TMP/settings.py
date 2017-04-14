@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TEMPlATE_DIR = os.path.join(BASE_DIR, 'templates')
-STATIC_DIR = os.path.join(BASE_DIR, 'staticFiles')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
 # Quick-start development settings - unsuitable for production
@@ -83,8 +83,8 @@ WSGI_APPLICATION = 'TMP.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tmp',
-        'USER': 'tmpuser',
+        'NAME': 'tmp_prod',
+        'USER': 'u_tmp',
         'PASSWORD': 'ShadowTech1027',
         'HOST': 'localhost',
         'PORT': '',
@@ -146,3 +146,4 @@ try:
     print("DEV SETUP RUNNING")
 except ImportError as e:
     print("PROD SETUP RUNNING")
+
