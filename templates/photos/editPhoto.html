@@ -9,10 +9,11 @@
 
 
 {% block body_block %}
-    <form action="{% url 'editPhoto' %}?id={{ photo.id }}" method="post" enctype="multipart/form-data">
+    <form class="edit" action="{% url 'editPhoto' %}?id={{ photo.id }}" method="post" enctype="multipart/form-data">
+        <img src="/media/web/{{photo.id}}.jpg"/>
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" name="submit" value="Submit" />
+        <input class="submit" type="submit" name="submit" value="Submit" />
     </form>
 
 {% endblock %}

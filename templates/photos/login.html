@@ -1,3 +1,25 @@
+{% extends 'photos/base.html' %}
+{% load staticfiles %}
+{% block head_block %}
+    <link rel="stylesheet" type="text/css" href="{% static "/styles/admin.css" %}" />
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+{% endblock %}
+
+
+{% block body_block %}
+        <form id="login_form" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <p><label>Username</label><input type="text" name="username" value=""/></p>
+            <p><label>Password</label><input type="password" name="password" value=""/></p>
+
+            <input class="submit" type="submit" value="Login" />
+        </form>
+
+{% endblock %}
+
+<!--
 <!DOCTYPE html>
 
 <html>
@@ -16,4 +38,4 @@
             <input type="submit" value="submit" />
         </form>
     </body>
-</html>
+</html>-->

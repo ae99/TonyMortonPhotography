@@ -9,10 +9,10 @@
 
 
 {% block body_block %}
-    <form action="{% url 'newPhoto' %}" method="post" enctype="multipart/form-data">
+    <form class="new" action="{% url 'newPhoto' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" name="submit" value="Submit" />
+        <input class="submit" type="submit" name="submit" value="Submit" />
     </form>
 
 {% endblock %}

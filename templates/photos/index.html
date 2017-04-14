@@ -7,19 +7,17 @@
     <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
     <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static "/styles/gallery.css" %}" />
-
     <script src="{% static '/scripts/gallery.js' %}"></script>
     <script>        
-        $(document).ready(function(){
-            $(window).scroll(function() {
-                $('header>section.full').each(function(r) {
-                    var pos = $(this).offset().top;
-                    var scrolled = $(window).scrollTop();
-                    $('header>section.full').css('top', -(scrolled * 0.3) + 'px');
-                });
-            });
-        });
+//        $(document).ready(function(){
+//            $(window).scroll(function() {
+//                $('header').each(function(r) {
+//                    var pos = $(this).offset().top;
+//                    var scrolled = $(window).scrollTop();
+//                    $('header').css('top', -(scrolled * 0.3) + 'px');
+//                });
+//            });
+//        });
     </script>
 {% endblock %}
 
@@ -27,15 +25,6 @@
 <section class="full">
     <h1>Tony Morton</h1>
     <div class="fadein">
-        <div class="bg" id="1" style=
-        "background: url({% static '/photos/1.jpg' %}) no-repeat top center; background-size: cover;">
-        </div>
-        <div class="bg hidden" id="2" style=
-        "background: url({% static '/photos/2.jpg' %}) no-repeat top center; background-size: cover;">
-        </div>
-        <div class="bg hidden" id="3" style=
-        "background: url({% static '/photos/3.jpg' %}) no-repeat center center; background-size: cover;">
-        </div>
     </div>
     <div class="gradient"></div>
 </section>
@@ -61,7 +50,7 @@
     </div>
     <section class="gallery">
     {% for photo in photos %}
-        <a href="#" onclick="showModal('/photo/{{photo.id}}')">
+        <a onclick="showModal('/photo/{{photo.id}}')">
             <img src="/media/thumb/{{ photo.id }}.jpg">
             <h3 class="thumbnailCaption">{{ photo.name }}</h3>
         </a>

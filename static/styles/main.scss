@@ -16,6 +16,8 @@ html, body {
 
 header {
     overflow-x: hidden;
+    padding: 0;
+    margin: 0;
 }
 
 header>nav {
@@ -44,9 +46,9 @@ header>nav {
 
 header>section.full {
     position: relative;
-    background-color: red;
-    height: 10vh;
-//    height: 100vh;
+    background: url('/static/photos/4.jpg');
+    background-position: center;
+    height: 100vh;
     width: 100%;
     top: 0;
     left: 0;
@@ -54,6 +56,7 @@ header>section.full {
     h1 {
         font-family: 'Reenie Beanie';
         font-size: 13.5rem;
+        font-weight: 400;
         color: rgba(0,0,0,0.7);
         position: absolute;
         bottom: 3rem;
@@ -65,11 +68,17 @@ header>section.full {
         height: 100%;
         width: 100%;
     }
+    
+    .gradient {
+        margin-top: -8rem;
+        height: 8rem;
+        background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    }
 }
 
 main {
     background-color: #000;
-    padding: 1rem;
+    padding: 0 1rem;
     width: 100%;
     max-width: 1300px;
     margin: auto;
@@ -94,29 +103,36 @@ body {
     position: relative;
     border-top: 2px solid white;
     border-bottom: 2px solid white;
-    
+    box-sizing: content-box;
     span {
         display: block;
-        padding: 0.5rem;
         padding-left: 1rem;
-        line-height: 2rem;
+        line-height: 3rem;
         font-size: 1.25rem;
     }
     
     .items {
         min-width: 10rem;
-        background-color: red;
+        background-color: darken(white, 30);
         z-index: 10;
         display: none;
         position: absolute;
         a {
+            text-decoration: none;
+            color: black;
             font-size: 1.25rem;
             display: block;
             height: 3rem;
             padding: 0.5rem;
             padding-left: 1rem;
-            line-height: 2rem;            
+            line-height: 2rem;
+            transition: all 0.2s;
+            &:hover {
+                color: lighten(black, 30)
+            }
         }
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
     }
     
     &:hover .items {
@@ -385,3 +401,38 @@ footer {
     } 
 }
 
+
+
+
+.about_page {
+    font-family: 'Lato';
+    font-weight: 300;
+}
+
+.about_page p,.about_page ul {
+	color: white;
+	max-width: 800px;
+	margin: 2em auto;
+	padding: 1em;
+}
+.about_page h1 {
+	color: white;
+	text-align: center;
+	padding: 1em;
+}
+.about_page h3 {
+	color: white;
+	text-align: center;
+	padding: 1em;
+}
+
+.about_page li {
+	
+}
+
+.about_page img {
+	max-width: 100%;
+	display: inline;
+	float: left;
+	margin: 1rem;
+}
