@@ -1,2 +1,8 @@
 
 TMP/local_settings\.py
+
+media/
+
+*.pyc
+
+db\.sqlite3

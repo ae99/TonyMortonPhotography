@@ -24,9 +24,9 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'b6y)lr!87n*8e(odu#e+of2#cv$3(m96u%($9z$1d_u%bk@$_%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['alexedwards.xyz']
+ALLOWED_HOSTS = ['alexedwards.xyz','127.0.0.1']
 
 
 ##quwraRa-a?waQachAWRachutuc#U5Rev
@@ -133,6 +133,7 @@ MEDIA_URL = '/media/'
 
 
 try:
-    from local_settings import *
+    from TMP.local_settings import *
+    print("DEV SETUP RUNNING")
 except ImportError as e:
-    pass
+    print("PROD SETUP RUNNING")
