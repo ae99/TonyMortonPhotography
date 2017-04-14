@@ -26,7 +26,7 @@ SECRET_KEY = 'b6y)lr!87n*8e(odu#e+of2#cv$3(m96u%($9z$1d_u%bk@$_%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['alexedwards.xyz']
 
 
 ##quwraRa-a?waQachAWRachutuc#U5Rev
@@ -131,3 +131,8 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
+
+try:
+    from local_settings import *
+except ImportError as e:
+    pass
