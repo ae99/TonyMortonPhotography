@@ -11,6 +11,10 @@ from django.core.urlresolvers import reverse
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+def setup(request):
+    photos = Photo.objects.filter(name='')
+    return render(request, 'photos/setup.html', {'photos':photos})
+
 def index(request, category=None):
     if category == None:
         photos_all = Photo.objects.all().order_by("-id")
