@@ -4,6 +4,8 @@ import urllib.request
 import csv
 import sys
 
+from multiprocessing import Pool
+from multiprocessing.dummy import Pool as ThreadPool
 
 
 import os
@@ -13,9 +15,11 @@ import django
 django.setup()
 from photos.models import Photo
 
+# import map
 
+def populate(input):
+	ide,name,description,original,file = input[0],input[1],input[2],input[3],input[4]
 
-def populate(id,name,description,original,file,):
 	p = Photo(id=ide, name=name, description=description, original=original)
 	url = "http://tonymortonphotography.com/uploads/" + file
 	
@@ -24,19 +28,27 @@ def populate(id,name,description,original,file,):
 	# img_temp.flush()
 
 	p.source.save(file, File(urllib.request.urlopen(url)))
-
-	p.save()
+	print('Populated', name, ide)
+	# p.save()
 
 import random
 
 if __name__ == '__main__':
-	print("Populating")
+	print("Queuing")
 	with open('data.csv') as f:
 		reader = csv.DictReader(f)
 		a = 1000
+		photos = []
 		for row in reader:
 			a += random.randint(0,200)
 			ide = hex(a)[2:]
-			populate(ide,row['name'],row['description'],row['original'],row['file'])
-			print('Populated bird', row['name'])
+			print(ide)
+			photos.append([ide,row['name'],row['description'],row['original'],row['file']]) 
+
+		print("Populating")
+		pool = ThreadPool()
+
+		results = pool.map(populate, photos)
+		pool.close()
+		pool.join()
 
