@@ -141,8 +141,17 @@ body {
 }
 
 .gallery {
+    
+    overflow: auto;
+    
+    .column { float: left; }
+    .size-1of2 { width: 50%; }
+    .size-1of3 { width: 33.33333%; }
+    .size-1of4 { width: 25%; }
+    
+    
     a {
-        width: 400px;
+        max-width: 400px;
         border-radius: 10px;
         overflow: hidden;
         position: relative;
@@ -151,7 +160,7 @@ body {
         cursor: zoom-in;
         margin: 0.5rem;
         img {
-            width: 400px;
+            width: 100%;
             display: block;
             position: relative;
             transition: all 0.4s;

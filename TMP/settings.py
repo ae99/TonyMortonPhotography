@@ -28,7 +28,7 @@ SECRET_KEY = 'b6y)lr!87n*8e(odu#e+of2#cv$3(m96u%($9z$1d_u%bk@$_%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['alexedwards.xyz','127.0.0.1']
+ALLOWED_HOSTS = ['alexedwards.xyz','127.0.0.1','tonymortonphotography.com']
 
 
 ##quwraRa-a?waQachAWRachutuc#U5Rev

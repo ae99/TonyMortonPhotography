@@ -25,6 +25,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # url(r'^$', views.index, name='index'),
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls,name='admin'),
     url(r'', include('photos.urls')), #Redirects all stuff to photos app
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

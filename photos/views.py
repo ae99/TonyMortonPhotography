@@ -20,7 +20,7 @@ def index(request, category=None):
         photos_all = Photo.objects.all().order_by("-id")
     else:
         photos_all = Photo.objects.filter(category=category)
-    paginator = Paginator(photos_all, 5)
+    paginator = Paginator(photos_all, 20)
     page = request.GET.get('page', '1')
     
     category_list = Category.objects.all()
