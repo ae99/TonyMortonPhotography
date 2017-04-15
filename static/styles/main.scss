@@ -95,8 +95,9 @@ body {
 }
 
 .categories {
-    width: 10rem;
+    min-width: 10rem;
     position: relative;
+    display: inline-block;
     height: 3rem;
     font-weight: 300;
     color: white;
@@ -112,19 +113,19 @@ body {
     }
     
     .items {
-        min-width: 10rem;
+        min-width: 100%;
         background-color: darken(white, 30);
         z-index: 10;
         display: none;
         position: absolute;
         a {
             text-decoration: none;
+            white-space: nowrap;
             color: black;
             font-size: 1.25rem;
             display: block;
             height: 3rem;
-            padding: 0.5rem;
-            padding-left: 1rem;
+            padding: 0.5rem 1rem;
             line-height: 2rem;
             transition: all 0.2s;
             &:hover {
