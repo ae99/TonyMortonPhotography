@@ -33,6 +33,7 @@ class Photo(models.Model):
     description = models.TextField(default="", blank=True)
     category = models.ForeignKey(Category, blank=True, null=True)
 
+    original = models.CharField(max_length=128, blank=True)
     source = models.ImageField(upload_to='source')
 
     iso = models.CharField(max_length=128, default="", blank=True)
