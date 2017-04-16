@@ -46,7 +46,7 @@ class Photo(models.Model):
     def make_thumb(self, img):
         img = img.copy()
         img.thumbnail([400, 99999], PIL.Image.ANTIALIAS)
-        img.save(settings.MEDIA_DIR + "/thumb/" + self.id + ".jpg", format="JPEG", quality=60)
+        img.save(settings.MEDIA_DIR + "/thumb/" + self.id + ".jpg", format="JPEG", quality=55)
 
     def make_web(self, img):
         img = img.copy()

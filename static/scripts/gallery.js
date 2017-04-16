@@ -21,10 +21,10 @@ function showModal(url) {
 };
 
 
-window.onload = function () {
-      savvior.init('.gallery', {
-    "screen and (max-width: 40em)": { columns: 2 },
-    "screen and (min-width: 40em)": { columns: 3 },
+//window.onload = function () {
+savvior.init('.gallery', {
+  "screen and (max-width: 420px)": { columns: 2 },
+  "screen and (min-width: 420px) and (max-width: 950px)": { columns: 3 },
+  "screen and (min-width: 950px)": { columns: 4 },
 });
-
-}
+//}

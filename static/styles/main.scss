@@ -48,6 +48,7 @@ header>section.full {
     position: relative;
     background: url('/static/photos/4.jpg');
     background-position: center;
+    background-size: cover;
     height: 100vh;
     width: 100%;
     top: 0;
@@ -157,7 +158,7 @@ body {
         overflow: hidden;
         position: relative;
         z-index: 0;
-        display: block;
+        display: inline-block;
         cursor: zoom-in;
         margin: 0.5rem;
         img {
