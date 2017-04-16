@@ -201,150 +201,175 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0, 0.8);
     z-index: 10000;
-}
-
-.modal img{
-    max-height: 100%;
-    max-width: 100%;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    background-color: rgba(0,0,0, 0.8);
+    font-family: 'Lato';
+    font-weight: 300;
     
-    animation-name: zoomImage;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-out;
-    animation-duration: 1s;
-}
+    .sidebar {
+        transition: all 0.5s ease-in-out;
+        position: fixed;
+        left: -18rem;
+        top: 0;
+        height: 100%;
+        width: 18rem;
+        display: inline-block;
+        background-color: #1F1D1D;
+        padding: 1rem;
+        
+        h2 {
+            font-weight: 300;
+            font-size: 2.5rem;
+            margin: 0;
+        }
 
-@keyframes zoomImage {
-    0% {
-        max-height: 0%;
-        max-width: 0%;
+        p {
+            margin: 0;
+            margin-bottom: 1rem;
+            color: #95989A;
+        }
+        
+        #toggle {
+            cursor: pointer;
+            width: 2rem;
+            height: 6rem;
+            line-height: 6rem;
+            top: 10rem;
+            position: absolute;
+            right: -2rem;
+            background-color: #1F1D1D;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            
+            img {
+                transition: all 0.5s;
+                margin-top: 2.25rem;
+                margin-left: 0.25rem;
+                display: inline;
+                width: 1.5rem;
+            }
+        }
+        
+        .editContainer {
+            text-align: center;
+            position: absolute;
+            bottom: 1.5rem;
+            left: 0;
+            width: 100%;
+            a {
+                text-decoration: none;
+                color: black;
+                background-color: #77d45b;
+                padding: 0.5rem 2rem;
+            }
+        }        
     }
     
-    50% {
-        max-height: 0%;
-        max-width: 0%;
+    &.showSide {
+        .sidebar {
+            left: 0;
+            img {
+                transform: rotateY(180deg);
+            }
+        }
+        
+        >img {4
+            left: 18rem;
+        }
     }
-    100% {
+    
+    >img{
+        transition: all 1s;
         max-height: 100%;
         max-width: 100%;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+
+        animation-name: zoomImage;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-out;
+        animation-duration: 1s;
+        
+        @keyframes zoomImage {
+            0% {
+                max-height: 0%;
+                max-width: 0%;
+            }
+
+            50% {
+                max-height: 0%;
+                max-width: 0%;
+            }
+            100% {
+                max-height: 100%;
+                max-width: 100%;
+            }
+        }
     }
-}
-
-.fullCaption {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    font-family: Roboto-Thin;
-    background-color: rgba(0,0,0, 0.8);
-    min-height: 5rem;
-    padding: 1rem 0;
-    display: block;
-}
-
-.fullCaption .name {
-    color: white;
-    font-size: 2rem;
-    margin: 2rem;
-}
-
-.fullCaption .settings{
-    color: #9E9E9E;
-    font-size: 1.5rem;
-}
-
-.modal svg {
-    cursor: pointer;
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
     
-}
 
-.modal svg rect.one{
-    transform-origin: 50% 50% 0px;
-    transform: rotate(45deg);
     
-    animation-name: rotateCrossesOne;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-out;
-    animation-duration: 0.25s;
-
-}
-
-.modal svg rect.two{
-    transform-origin: 50% 50% 0px;
-    transform: rotate(-45deg);
+    svg {
+        cursor: pointer;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        
+        rect.one{
+            transform-origin: 50% 50% 0px;
+            transform: rotate(45deg);
+        }
+        rect.two {
+            transform-origin: 50% 50% 0px;
+            transform: rotate(-45deg);
+        }
+    }
     
-    animation-name: rotateCrossesTwo;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-out;
-    animation-duration: 0.25s;
-
-}
-
-@keyframes rotateCrossesOne {
-    0% {
-        transform: rotate(0);
+    
+    .camera_icon {
+        font-family: 'Camera-Icons';
+        color: #77d45b;
+        font-weight: 400;
+        font-style: normal;
+        font-variant: normal;
+        line-height: 1em;
+        display: inline-block;
+        vertical-align: middle;
+        text-transform: none;
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        speak: none;
+        margin-right: .5em;
+        margin-left: 1em;
+        margin-top: -.15em;
     }
-    100% {
-        transform: rotate(45deg);
+
+    .icon_focal_length:before {
+        content: '\e600';
     }
-}
 
-@keyframes rotateCrossesTwo {
-    0% {
-        transform: rotate(0);
+    .icon_exposure_time:before {
+        content: '\e601';
     }
-    100% {
-        transform: rotate(-45deg);
+
+    .icon_iso:before {
+        content: '\e602';
     }
-}
+
+    .icon_camera:before {
+        content: '\e603';
+    }
+
+    .icon_aperture:before {
+        content: '\e604';
+    }
 
 
-.camera_icon {
-	font-family: 'Camera-Icons';
-	font-weight: 400;
-	font-style: normal;
-	font-variant: normal;
-	line-height: 1em;
-	display: inline-block;
-	vertical-align: middle;
-	text-transform: none;
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	speak: none;
-	margin-right: .5em;
-    margin-left: 2em;
-	margin-top: -.15em;
-}
-
-.icon_focal_length:before {
-	content: '\e600';
-}
-
-.icon_exposure_time:before {
-	content: '\e601';
-}
-
-.icon_iso:before {
-	content: '\e602';
-}
-
-.icon_camera:before {
-	content: '\e603';
-}
-
-.icon_aperture:before {
-	content: '\e604';
 }
 
 .pageNumbers {

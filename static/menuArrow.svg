@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="800">
+    <desc iVinci="yes" version="4.6" gridStep="20" showGrid="yes" snapToGrid="no" codePlatform="0"/>
+    <g id="Layer1" name="Layer 1" opacity="1">
+        <g id="Shape1">
+            <desc shapeID="1" type="0" basicInfo-basicType="2" basicInfo-roundedRectRadius="60" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-49.2155,-301.854,98.431,603.708)" text="" font-familyName="Helvetica" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(0.750044,0.754526,-0.634042,0.661713,400,562.548)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath1" d="M516.432,365.376 C537.442,343.448 571.001,342.299 591.388,362.807 C611.775,383.316 611.27,417.717 590.259,439.644 L283.568,759.72 C262.558,781.647 228.999,782.797 208.612,762.288 C188.225,741.78 188.731,707.378 209.741,685.451 L516.432,365.376 Z" style="stroke:#323232;stroke-opacity:1;stroke-width:0;stroke-linejoin:miter;stroke-miterlimit:2;stroke-linecap:round;fill-rule:evenodd;fill:#ffffff;fill-opacity:1;"/>
+        </g>
+        <g id="Shape2">
+            <desc shapeID="2" type="0" basicInfo-basicType="2" basicInfo-roundedRectRadius="60" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-49.2155,-301.854,98.431,603.708)" text="" font-familyName="Helvetica" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(0.750044,-0.754526,-0.634042,-0.661713,400,237.452)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath2" d="M516.432,434.624 C537.442,456.552 571.001,457.701 591.388,437.193 C611.775,416.684 611.269,382.283 590.259,360.356 L283.568,40.2801 C262.558,18.3528 228.999,17.2029 208.612,37.7117 C188.225,58.2204 188.73,92.6216 209.741,114.549 L516.432,434.624 Z" style="stroke:#323232;stroke-opacity:1;stroke-width:0;stroke-linejoin:miter;stroke-miterlimit:2;stroke-linecap:round;fill-rule:evenodd;fill:#ffffff;fill-opacity:1;"/>
+        </g>
+    </g>
+</svg>

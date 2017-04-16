@@ -1,23 +1,6 @@
 {% extends 'photos/base.html' %}
 {% load staticfiles %}
 
-{% block head_block %}
-    
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-    
-    <script>        
-//        $(document).ready(function(){
-//            $(window).scroll(function() {
-//                $('header').each(function(r) {
-//                    var pos = $(this).offset().top;
-//                    var scrolled = $(window).scrollTop();
-//                    $('header').css('top', -(scrolled * 0.3) + 'px');
-//                });
-//            });
-//        });
-    </script>
-{% endblock %}
-
 {% block header_block %}
 <section class="full">
     <h1>Tony Morton</h1>
@@ -76,5 +59,4 @@
             {% endif %}
         {% endif %}
     </div>
-<script src="{% static '/scripts/gallery.js' %}"></script>
 {% endblock %}

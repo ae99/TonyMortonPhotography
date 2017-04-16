@@ -1,21 +1,32 @@
-<div class="modal">
-            <img src="/media/web/{{photo.id}}.jpg">
-            <div class="fullCaption">
-                <span class="name">{{photo.name}}</span>
+{% load staticfiles %}
+<div class="modal showSide" id="modal">
+    <img ondblclick="document.getElementById('modal').parentNode.removeChild(document.getElementById('modal'));" src="/media/web/{{photo.id}}.jpg">
 
-                <br>
+    <div class="sidebar">
+        <h2>{{photo.name}}</h2>
+        <p>{{photo.description}}</p>
+        <p><i class="camera_icon icon_focal_length"></i>{{photo.focal_length}}</p>
+        <p><i class="camera_icon icon_aperture"></i> ƒ/{{photo.aperture}}</p>
+        <p><i class="camera_icon icon_exposure_time"></i> {{photo.exposure_time}}</p>
+        <p><i class="camera_icon icon_iso"></i>{{photo.iso}}</p>
 
+        <div id="toggle" onclick="toggle();"><img src="{% static 'menuArrow.svg' %}" /></div>
+
+        {% if user.is_authenticated %}
+        <div class="editContainer">
+            <a href="{% url 'editPhoto' %}?id={{photo.id}}">Edit Photo</a>
+        </div>
+        {% endif %}
+    </div>
+
+
+    <!--
                 <span class="settings"><i class="camera_icon icon_camera"></i>{{photo.camera}} w/{{photo.lens}}<i class="camera_icon icon_focal_length"></i>
-                {{photo.focal_length}}<i class="camera_icon icon_aperture"></i> ƒ/{{photo.aperture}}<i class="camera_icon icon_exposure_time"></i> {{photo.exposure_time}}<i class="camera_icon icon_iso"></i>{{photo.iso}}
-
                 </span>
-                
-                {% if user.is_authenticated %}
-                    <a href="{% url 'editPhoto' %}?id={{photo.id}}">Edit Image</a>
-                {% endif %}
-            </div>
+-->
 
-            <svg onclick="$('.modal').remove()" viewBox="0 0 70 70" width="70" height="70" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                <rect class="one" height="8" width="60" y="31" x="5" fill="#FFFFFF"></rect>                <rect class="two" height="8" width="60" y="31" x="5" fill="#FFFFFF"></rect>
-           </svg>
-    </div> 
+    <svg onclick="document.getElementById('modal').parentNode.removeChild(document.getElementById('modal'));" viewBox="0 0 70 70" width="50" height="50">
+        <rect class="one" height="8" width="60" y="31" x="5" fill="#77d45b"></rect>
+        <rect class="two" height="8" width="60" y="31" x="5" fill="#77d45b"></rect>
+    </svg>
+</div>
