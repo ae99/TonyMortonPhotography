@@ -1,6 +1,6 @@
 {% load staticfiles %}
 <div class="modal showSide" id="modal">
-    <img ondblclick="document.getElementById('modal').parentNode.removeChild(document.getElementById('modal'));" src="/media/web/{{photo.id}}.jpg">
+    <img ondblclick="document.getElementById('modal').parentNode.removeChild(document.getElementById('modal'));allowModal=true;" src="/media/web/{{photo.id}}.jpg">
 
     <div class="sidebar">
         <h2>{{photo.name}}</h2>
@@ -25,7 +25,7 @@
                 </span>
 -->
 
-    <svg onclick="document.getElementById('modal').parentNode.removeChild(document.getElementById('modal'));" viewBox="0 0 70 70" width="50" height="50">
+    <svg onclick="document.getElementById('modal').parentNode.removeChild(document.getElementById('modal'));allowModal=true;" viewBox="0 0 70 70" width="50" height="50">
         <rect class="one" height="8" width="60" y="31" x="5" fill="#77d45b"></rect>
         <rect class="two" height="8" width="60" y="31" x="5" fill="#77d45b"></rect>
     </svg>

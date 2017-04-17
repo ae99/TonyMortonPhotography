@@ -22,12 +22,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-def getTimeHex():
-    return str(hex(int(datetime.datetime.now().timestamp())))[2:]
+def getTime():
+    return str(int(datetime.datetime.now().timestamp()))
 
 
 class Photo(models.Model):
-    id = models.CharField(max_length=32, primary_key=True, default=getTimeHex)
     name = models.CharField(max_length=128)
 
     description = models.TextField(default="", blank=True)
@@ -46,7 +45,7 @@ class Photo(models.Model):
     def make_thumb(self, img):
         img = img.copy()
         img.thumbnail([400, 99999], PIL.Image.ANTIALIAS)
-        img.save(settings.MEDIA_DIR + "/thumb/" + self.id + ".jpg", format="JPEG", quality=55)
+        img.save(settings.MEDIA_DIR + "/thumb/" + str(self.id) + ".jpg", format="JPEG", quality=55)
 
     def make_web(self, img):
         img = img.copy()
@@ -62,7 +61,7 @@ class Photo(models.Model):
 
         # Pastes the watermark onto image. Second parameter is x,y coordinate to put top-left corner of watermark
         img.paste(watermark, (imgBox[2] - margin - watermarkBox[2], imgBox[3] - margin - watermarkBox[3]), watermark)
-        img.save(settings.MEDIA_DIR + "/web/" + self.id + ".jpg", format="JPEG", quality=90)
+        img.save(settings.MEDIA_DIR + "/web/" + str(self.id) + ".jpg", format="JPEG", quality=90)
 
     def save(self, *args, **kwargs):
         img = Image.open(self.source)

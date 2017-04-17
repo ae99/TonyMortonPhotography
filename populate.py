@@ -42,7 +42,7 @@ if __name__ == '__main__':
 			photos.append([ide,row['name'],row['description'],row['original'],row['file']]) 
 
 		print("Populating")
-		pool = ThreadPool()
+		pool = ThreadPool(32)
 
 		# for i in photos:
 		# 	populate(i)

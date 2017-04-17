@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Photo',
             fields=[
-                ('id', models.CharField(default=photos.models.getTimeHex, max_length=32, primary_key=True, serialize=False)),
+                ('id', models.CharField(default=photos.models.getTime, max_length=32, primary_key=True, serialize=False)),
                 ('name', models.CharField(max_length=128)),
                 ('description', models.TextField(blank=True, default='')),
                 ('uploadDate', models.DateTimeField(auto_now_add=True)),
