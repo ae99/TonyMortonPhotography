@@ -39,7 +39,7 @@ class Photo(models.Model):
     lens = models.CharField(max_length=128, default="", blank=True)
     focal_length = models.CharField(max_length=128, default="", blank=True)
     exposure_time = models.CharField(max_length=128, default="", blank=True)
-    takenDate = models.CharField(max_length=128, default="", blank=True)
+    date_taken = models.CharField(max_length=128, default="", blank=True)
     aperture = models.CharField(max_length=128, default="", blank=True)
 
     def make_thumb(self, img):
@@ -92,7 +92,7 @@ class Photo(models.Model):
 @receiver(post_delete, sender=Photo)
 def photo_post_delete_handler(sender, **kwargs):
     photo = kwargs['instance']
-    storage, path, filename = photo.source.storage, photo.source.path, photo.id
+    storage, path, filename = photo.source.storage, photo.source.path, str(photo.id)
     storage.delete(path)
     storage.delete(settings.MEDIA_DIR + "/web/" + filename + ".jpg")
     storage.delete(settings.MEDIA_DIR + "/thumb/" + filename + ".jpg")

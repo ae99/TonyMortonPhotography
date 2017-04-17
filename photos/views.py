@@ -19,7 +19,7 @@ def index(request, category=None):
     if category == None:
         photos_all = Photo.objects.all().order_by("-id")
     else:
-        photos_all = Photo.objects.filter(category=category)
+        photos_all = Photo.objects.filter(category=category).order_by("id")
     paginator = Paginator(photos_all, 20)
     page = request.GET.get('page', '1')
     
@@ -55,7 +55,7 @@ def newPhoto(request):
         form = NewPhotoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect(reverse('editPhoto') + "?id=" + form.instance.id)
+            return redirect(reverse('editPhoto') + "?id=" + str(form.instance.id))
     else:
         form = NewPhotoForm()
     return render(request, 'photos/newPhoto.html', {'form': form})
