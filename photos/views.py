@@ -11,10 +11,6 @@ from django.core.urlresolvers import reverse
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-def setup(request):
-    photos = Photo.objects.filter(name='')
-    return render(request, 'photos/setup.html', {'photos':photos})
-
 def index(request, category=None):
     if category == None:
         photos_all = Photo.objects.all().order_by("-id")
@@ -35,18 +31,18 @@ def index(request, category=None):
     showNav = paginator.num_pages >= 2
         
     
-    return render(request, 'photos/index.html', {'photos': photos, 'category':category, 'categories':category_list, 'showNav': showNav})
+    return render(request, 'index.html', {'photos': photos, 'category':category, 'categories':category_list, 'showNav': showNav})
 
 def category(request, category_slug):
     category = get_object_or_404(Category, slug=category_slug)
     return index(request, category)
 
 def about(request):
-    return render(request, 'photos/about.html')
+    return render(request, 'about.html')
 
 
 def show_photo(request, photo_id):
-    return render(request, 'photos/photo.html', {'photo': get_object_or_404(Photo, id=photo_id)})
+    return render(request, 'photo.html', {'photo': get_object_or_404(Photo, id=photo_id)})
 
 
 @login_required
@@ -58,7 +54,7 @@ def newPhoto(request):
             return redirect(reverse('editPhoto') + "?id=" + str(form.instance.id))
     else:
         form = NewPhotoForm()
-    return render(request, 'photos/newPhoto.html', {'form': form})
+    return render(request, 'newPhoto.html', {'form': form})
 
 @login_required
 def editPhoto(request):
@@ -73,7 +69,7 @@ def editPhoto(request):
     else:
         form = EditPhotoForm(instance=instance)
 
-    return render(request, 'photos/editPhoto.html', {'photo': instance, 'form': form})
+    return render(request, 'editPhoto.html', {'photo': instance, 'form': form})
 
 
 def user_login(request):
@@ -96,7 +92,7 @@ def user_login(request):
             print("Invalid login details: {0}, {1}".format(username, password))
             return HttpResponse("Invalid login details supplied")
     else:
-        return render(request, 'photos/login.html', {})
+        return render(request, 'login.html', {})
 
 
 @login_required

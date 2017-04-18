@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block head_block %}
+    <link rel="stylesheet" type="text/css" href="{% static "/styles/admin.css" %}" />
+{% endblock %}
+
+
+{% block body_block %}
+        <form id="login_form" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <p><label>Username</label><input type="text" name="username" value=""/></p>
+            <p><label>Password</label><input type="password" name="password" value=""/></p>
+
+            <input class="submit" type="submit" value="Login" />
+        </form>
+
+{% endblock %}
