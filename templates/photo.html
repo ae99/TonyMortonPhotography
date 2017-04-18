@@ -14,7 +14,7 @@
 
         {% if user.is_authenticated %}
         <div class="editContainer">
-            <a href="{% url 'editPhoto' %}?id={{photo.id}}">Edit Photo</a>
+            <a href="{% url 'editPhoto' photo_id=photo.id %}">Edit Photo</a>
         </div>
         {% endif %}
     </div>

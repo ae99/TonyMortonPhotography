@@ -1,14 +1,21 @@
 from django.conf.urls import url
 from photos import views
 
+
+# Defines URL patterns - what view to send each url to
 urlpatterns = [
-    url(r'^$', views.index, name='index'),  # Handels calls to /photos/
-    url(r'^photo/(?P<photo_id>[\w\-]+)/$', #Regex to select gallery item and its id
-        views.show_photo, name='photo'),  #Sends to tag view to be handled
-    url(r'^gallery/(?P<category_slug>[\w\-]+)/$', views.category, name='category'),
-    url(r'^newPhoto/$', views.newPhoto, name="newPhoto"),
-    url(r'^editPhoto/$', views.editPhoto, name="editPhoto"),
+    # Handels calls to '/', sends it to index view to be handeled
+    url(r'^$', views.index, name='index'),
+    url(r'^gallery/(?P<category_slug>[\w\-]+)/(?P<page_number>[\d]+)/$', views.index, name='index'),
+    
+    url(r'^new/$', views.newPhoto, name="newPhoto"),
+    url(r'^edit/(?P<photo_id>[\d]+)/$', views.editPhoto, name='editPhoto'),
+    url(r'^delete/(?P<photo_id>[\d]+)/$', views.deletePhoto, name='deletePhoto'),
     url(r'^about/$', views.about, name='about'),
     url(r'^login/$', views.user_login, name='login'),
     url(r'^logout/$', views.user_logout, name='logout'),
+
+
+    # <photo_id> is Regular Expression (REGEX) to extract variable from URL
+    url(r'^photo/(?P<photo_id>[\d]+)/$', views.show_photo, name='photo'),
 ]

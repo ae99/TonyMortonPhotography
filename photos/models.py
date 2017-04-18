@@ -1,32 +1,40 @@
+# Import required django files
 from django.db import models
-from TMP import settings
-from PIL import Image
-import PIL.ExifTags
-import datetime
 from django.template.defaultfilters import slugify
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
 
+# Import settings file - for media directory
+from TMP import settings
 
+# Import "Pillow" - Python image manipulation
+from PIL import Image
+import PIL.ExifTags
+
+
+# Category class, or as Django calles it - "Model"
 class Category(models.Model):
+    # Defining Fields
     name = models.CharField(max_length=128, unique=True)
     slug = models.SlugField(unique=True)
 
+    # Override default save method to "slugify" name
+    # "Slugifing" makes string url-safe
+    # E.g. "This is a string" => "this-string"
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
-    
+
     class Meta:
+        # Avoid misspelt "categorys"
         verbose_name_plural = "categories"
 
     def __str__(self):
         return self.name
 
-def getTime():
-    return str(int(datetime.datetime.now().timestamp()))
-
 
 class Photo(models.Model):
+    # Define all fields
     name = models.CharField(max_length=128)
 
     description = models.TextField(default="", blank=True)
@@ -42,18 +50,22 @@ class Photo(models.Model):
     date_taken = models.CharField(max_length=128, default="", blank=True)
     aperture = models.CharField(max_length=128, default="", blank=True)
 
+    # Function to make thumbnails, accepts PIL image as input
     def make_thumb(self, img):
-        img = img.copy()
-        img.thumbnail([400, 99999], PIL.Image.ANTIALIAS)
+        img = img.copy()  # Duplicate to avoid modifying original
+        img.thumbnail([400, 99999], PIL.Image.ANTIALIAS)  # Resize - max [x,y] dimensions
+
+        # Save image to media directory, set JPEG compression quality to %55
         img.save(settings.MEDIA_DIR + "/thumb/" + str(self.id) + ".jpg", format="JPEG", quality=55)
 
+    # Function to make web acceptable photo
     def make_web(self, img):
         img = img.copy()
-        watermark = Image.open(settings.STATIC_DIR + '/watermark/watermark.png')
+        watermark = Image.open(settings.STATIC_DIR + '/watermark/watermark.png')  # Open watermark file
 
         # Resize image and watermark to be properly scaled
-        img.thumbnail([1920, 999999], PIL.Image.ANTIALIAS)
-        watermark.thumbnail([int(min(img.size[0], img.size[1]) * 0.30), 999999], PIL.Image.ANTIALIAS)
+        img.thumbnail([1920, 999999], PIL.Image.ANTIALIAS)  # Max width 1920px
+        watermark.thumbnail([int(min(img.size[0], img.size[1]) * 0.30), 999999], PIL.Image.ANTIALIAS)  # Resizes watermark
 
         imgBox = img.getbbox()
         watermarkBox = watermark.getbbox()
@@ -63,12 +75,20 @@ class Photo(models.Model):
         img.paste(watermark, (imgBox[2] - margin - watermarkBox[2], imgBox[3] - margin - watermarkBox[3]), watermark)
         img.save(settings.MEDIA_DIR + "/web/" + str(self.id) + ".jpg", format="JPEG", quality=90)
 
+    # Override default save method
     def save(self, *args, **kwargs):
+        # Open Image Source
         img = Image.open(self.source)
+        # Set original filename from source image
+        self.original = self.source.name
 
+        # Error trapping
         try:
+            # Attempt to retrieve "EXIF" Data
+            # 'EXIF' is photo metadata
             raw_data = img._getexif()
             if raw_data:
+                # Attempt to retrieve individual fields and set field values
                 try:
                     self.iso = raw_data[34855]
                     self.lens = raw_data[42036]
@@ -80,8 +100,10 @@ class Photo(models.Model):
                     print("EXIF Extraction unsuccessful.")
         except AttributeError:
             print("No EXIF Data within file.")
-
+        # Run original save method
         super(Photo, self).save(*args, **kwargs)
+
+        # Run submethods to make web and thumbnail versions of image
         self.make_web(img)
         self.make_thumb(img)
 
@@ -89,9 +111,12 @@ class Photo(models.Model):
         return self.name
 
 
+# Runs when image is being deleted
 @receiver(post_delete, sender=Photo)
 def photo_post_delete_handler(sender, **kwargs):
+    # Captures photo model instance - i.e. object
     photo = kwargs['instance']
+    # Set variables and delete the three images - Original, Websafe and Thumbnail
     storage, path, filename = photo.source.storage, photo.source.path, str(photo.id)
     storage.delete(path)
     storage.delete(settings.MEDIA_DIR + "/web/" + filename + ".jpg")

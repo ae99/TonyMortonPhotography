@@ -23,12 +23,14 @@
                 <a href="{% url 'index' %}">All</a>
             {% endif %}
             {% for cat in categories %}
-                {% if cat != category %}
-                <a href="{% url 'category' category_slug=cat.slug %}">{{cat}}</a>
+                {% if cat != category %} {# If Category is not current page #}
+                    <a href="{% url 'index' category_slug=cat.slug page_number=1 %}">{{cat}}</a>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
+
+
     <section class="gallery">
     {% for photo in photos %}
         <a onclick="showModal('/photo/{{photo.id}}')">
@@ -40,21 +42,21 @@
     <div class="pageNumbers">
         {% if showNav %}
             {% if photos.has_previous %}
-                <a id="last" href="?page={{ photos.previous_page_number }}">Last Page</a>
+                <a id="last" href="{% url 'index' page_number=photos.previous_page_number category_slug=category_slug %}">Last Page</a>
             {% else %}
                 <span id="last">Last Page</span>
-            {% endif %}
+            {% endif %} 
 
              {% for i in photos.paginator.page_range %}
                 {% if photos.number == i %}
-                    <a id="active" href="?page={{ i }}">{{ i }}</a>
+                    <a id="active" href="{% url 'index' page_number=i category_slug=category_slug %}">{{ i }}</a>
                 {% else %}
-                    <a href="?page={{ i }}">{{ i }}</a> 
+                    <a href="{% url 'index' page_number=i category_slug=category_slug %}">{{ i }}</a> 
                 {% endif %}
             {% endfor %}
 
             {% if photos.has_next %}
-                <a id="next" href="?page={{ photos.next_page_number }}">Next Page</a>
+                <a id="next" href="{% url 'index' page_number=photos.next_page_number category_slug=category_slug %}">Next Page</a>
             {% else %}
                 <span id="next">Next Page</span>
             {% endif %}
