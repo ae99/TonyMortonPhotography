@@ -75,12 +75,23 @@ class Photo(models.Model):
         img.paste(watermark, (imgBox[2] - margin - watermarkBox[2], imgBox[3] - margin - watermarkBox[3]), watermark)
         img.save(settings.MEDIA_DIR + "/web/" + str(self.id) + ".jpg", format="JPEG", quality=90)
 
+    # Checks if image has been changed
+    def imageChanged(self):
+        if self.id is not None:
+            orig = Photo.objects.get(id=self.id)
+            return orig.source != self.source
+        else:
+            return True
+
     # Override default save method
     def save(self, *args, **kwargs):
         # Open Image Source
         img = Image.open(self.source)
-        # Set original filename from source image
-        self.original = self.source.name
+
+        imageChanged = self.imageChanged()
+            # Sets original filename
+        if imageChanged:
+            self.original = self.source.name
 
         # Error trapping
         try:
@@ -104,8 +115,9 @@ class Photo(models.Model):
         super(Photo, self).save(*args, **kwargs)
 
         # Run submethods to make web and thumbnail versions of image
-        self.make_web(img)
-        self.make_thumb(img)
+        if imageChanged:
+            self.make_web(img)
+            self.make_thumb(img)
 
     def __str__(self):
         return self.name
