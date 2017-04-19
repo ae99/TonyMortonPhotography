@@ -151,7 +151,7 @@ body {
     width: 25%; }
   /* line 155, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .gallery a {
-    max-width: 400px;
+    max-width: 300px;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
@@ -196,11 +196,11 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
   z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.8);
   font-family: 'Lato';
   font-weight: 300; }
-  /* line 210, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 209, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .modal .sidebar {
     transition: all 0.5s ease-in-out;
     position: fixed;
@@ -211,17 +211,21 @@ body {
     display: inline-block;
     background-color: #1F1D1D;
     padding: 1rem; }
-    /* line 221, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+    /* line 220, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     .modal .sidebar h2 {
       font-weight: 300;
       font-size: 2.5rem;
       margin: 0; }
-    /* line 227, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+    /* line 226, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     .modal .sidebar p {
       margin: 0;
       margin-bottom: 1rem;
       color: #95989A; }
-    /* line 233, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+      /* line 230, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+      .modal .sidebar p span {
+        display: block;
+        padding-left: 2.5rem; }
+    /* line 236, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     .modal .sidebar #toggle {
       cursor: pointer;
       width: 2rem;
@@ -233,36 +237,36 @@ body {
       background-color: #1F1D1D;
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px; }
-      /* line 245, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+      /* line 248, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
       .modal .sidebar #toggle img {
         transition: all 0.5s;
         margin-top: 2.25rem;
         margin-left: 0.25rem;
         display: inline;
         width: 1.5rem; }
-    /* line 254, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+    /* line 257, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     .modal .sidebar .editContainer {
       text-align: center;
       position: absolute;
       bottom: 1.5rem;
       left: 0;
       width: 100%; }
-      /* line 260, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+      /* line 263, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
       .modal .sidebar .editContainer a {
         text-decoration: none;
         color: black;
         background-color: #77d45b;
         padding: 0.5rem 2rem; }
-  /* line 270, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 273, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .modal.showSide .sidebar {
     left: 0; }
-    /* line 272, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+    /* line 275, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     .modal.showSide .sidebar img {
       transform: rotateY(180deg); }
-  /* line 277, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 280, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .modal.showSide > img {
     left: 18rem; }
-  /* line 282, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 285, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .modal > img {
     transition: all 1s;
     max-height: 100%;
@@ -288,21 +292,21 @@ body {
   100% {
     max-height: 100%;
     max-width: 100%; } }
-  /* line 317, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 320, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .modal svg {
     cursor: pointer;
     position: absolute;
     right: 1rem;
     top: 1rem; }
-    /* line 323, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+    /* line 326, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     .modal svg rect.one {
       transform-origin: 50% 50% 0px;
       transform: rotate(45deg); }
-    /* line 327, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+    /* line 330, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     .modal svg rect.two {
       transform-origin: 50% 50% 0px;
       transform: rotate(-45deg); }
-  /* line 334, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 337, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .modal .camera_icon {
     font-family: 'Camera-Icons';
     color: #77d45b;
@@ -320,45 +324,45 @@ body {
     margin-right: .5em;
     margin-left: 1em;
     margin-top: -.15em; }
-  /* line 353, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 356, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .modal .icon_focal_length:before {
     content: '\e600'; }
-  /* line 357, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 360, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .modal .icon_exposure_time:before {
     content: '\e601'; }
-  /* line 361, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 364, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .modal .icon_iso:before {
     content: '\e602'; }
-  /* line 365, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 368, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .modal .icon_camera:before {
     content: '\e603'; }
-  /* line 369, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 372, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .modal .icon_aperture:before {
     content: '\e604'; }
 
-/* line 376, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+/* line 379, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 .pageNumbers {
   width: 100%;
   text-align: center;
   color: #707070;
   font-weight: 300;
   font-size: 1.25rem; }
-  /* line 382, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 385, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .pageNumbers a {
     text-decoration: none;
     color: white;
     padding: 0 0.5rem; }
-    /* line 385, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+    /* line 388, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     .pageNumbers a#active {
       border-bottom: 2px solid white; }
-  /* line 390, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 393, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .pageNumbers #last {
     padding-right: 2.5rem; }
-  /* line 394, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 397, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   .pageNumbers #next {
     padding-left: 2.5rem; }
 
-/* line 400, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+/* line 403, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 footer {
   max-width: 1200px;
   margin: 1rem auto;
@@ -371,54 +375,54 @@ footer {
   font-size: 1.25rem;
   text-align: center;
   font-smoothing: none; }
-  /* line 415, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 418, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   footer a {
     color: #B4B4B4;
     text-decoration: none;
     transition: all 0.5s; }
-    /* line 419, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+    /* line 422, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     footer a:hover {
       color: white; }
-  /* line 424, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 427, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   footer nav {
     position: absolute;
     left: 0; }
-    /* line 427, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+    /* line 430, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     footer nav a {
       margin-right: 1rem; }
-  /* line 432, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+  /* line 435, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
   footer #right {
     position: absolute;
     right: 0; }
-    /* line 435, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+    /* line 438, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
     footer #right a {
       font-weight: 400; }
 
-/* line 444, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+/* line 447, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 .about_page {
   font-family: 'Lato';
   font-weight: 300; }
 
-/* line 449, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+/* line 452, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 .about_page p, .about_page ul {
   color: white;
   max-width: 800px;
   margin: 2em auto;
   padding: 1em; }
 
-/* line 455, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+/* line 458, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 .about_page h1 {
   color: white;
   text-align: center;
   padding: 1em; }
 
-/* line 460, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+/* line 463, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 .about_page h3 {
   color: white;
   text-align: center;
   padding: 1em; }
 
-/* line 470, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
+/* line 473, /Users/alexanderedwards/TonyMortonPhotography/static/styles/main.scss */
 .about_page img {
   max-width: 100%;
   display: inline;

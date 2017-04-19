@@ -5,6 +5,9 @@
     <div class="sidebar">
         <h2>{{photo.name}}</h2>
         <p>{{photo.description}}</p>
+        <p><i class="camera_icon icon_camera"></i>{{photo.camera}}
+            <span>w/{{photo.lens}}</span>
+        </p>
         <p><i class="camera_icon icon_focal_length"></i>{{photo.focal_length}}</p>
         <p><i class="camera_icon icon_aperture"></i> ƒ/{{photo.aperture}}</p>
         <p><i class="camera_icon icon_exposure_time"></i> {{photo.exposure_time}}</p>
@@ -18,13 +21,6 @@
         </div>
         {% endif %}
     </div>
-
-
-    <!--
-                <span class="settings"><i class="camera_icon icon_camera"></i>{{photo.camera}} w/{{photo.lens}}<i class="camera_icon icon_focal_length"></i>
-                </span>
--->
-
     <svg onclick="document.getElementById('modal').parentNode.removeChild(document.getElementById('modal'));allowModal=true;" viewBox="0 0 70 70" width="50" height="50">
         <rect class="one" height="8" width="60" y="31" x="5" fill="#77d45b"></rect>
         <rect class="two" height="8" width="60" y="31" x="5" fill="#77d45b"></rect>

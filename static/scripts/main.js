@@ -32,7 +32,6 @@ function showModal(url) {
 
 }
 
-
 function toggle(){
   document.getElementById("modal").classList.toggle('showSide');
 }

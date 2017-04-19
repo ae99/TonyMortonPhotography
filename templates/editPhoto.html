@@ -10,8 +10,8 @@
         <img src="/media/web/{{photo.id}}.jpg"/>
         {% csrf_token %}
         {{ form.as_p }}
-        <a href="{% url 'deletePhoto' photo_id=photo.id %}">Delete</a>
-        <input class="submit" type="submit" name="submit" value="Submit" />
+        <a class="delete half" href="{% url 'deletePhoto' photo_id=photo.id %}">Delete</a>
+        <input class="submit half" type="submit" name="submit" value="Submit" />
     </form>
 
 {% endblock %}

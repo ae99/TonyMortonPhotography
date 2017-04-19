@@ -1,6 +1,7 @@
 html {
     background-image: url(/static/photos/admin.jpg);
     background-attachment: fixed;
+    background-size: cover;
 }
 
 body {
@@ -26,7 +27,7 @@ form {
         display: inline-block;
         width: 100%;
     }
-    input, textarea {
+    input, textarea, .delete {
         box-sizing: border-box;
         display: inline-block;
         width: 100%;
@@ -52,7 +53,23 @@ form {
         border: none;
         border-bottom: 3px solid #CDDC39;
     }
-
+    
+    .half {
+        width: 50%;
+        display: inline-block;
+        margin: 0;
+        float: left;
+    }
+    
+    a.delete {
+        border-radius: 0;
+        outline: none;
+        border: none;
+        background-color: #F44336;
+        text-align: center;
+        line-height: 2rem;
+        color: white;
+    }
     
     input.submit {
         border-radius: 0;
