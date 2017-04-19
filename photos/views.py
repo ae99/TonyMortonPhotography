@@ -26,20 +26,23 @@ def index(request, category_slug="all", page_number=1):
     # Error trapping, set pages
     try:
         photos = paginator.page(page_number)
-    except PageNotAnInteger:
+    except PageNotAnInteger:  # Page number to low
         photos = paginator.page(1)
-    except EmptyPage:
+    except EmptyPage:  # Page number to high
         photos = paginator.page(paginator.num_pages)
 
     # Only show page numbers if more than 1 pages.
-    showNav = paginator.num_pages >= 2
+    show_nav = paginator.num_pages >= 2
 
+    page_list = pageinateRange(photos.number, paginator.num_pages)
     context = {
         'photos': photos,
+        'page_list': page_list,
+        'num_pages': paginator.num_pages,
         'category_slug': category_slug,  # Different from category - may be all
         'category': category,
         'categories': category_list,
-        'showNav': showNav
+        'show_nav': show_nav
     }
 
     # Send to index.html template with context of photos, category etc.
@@ -123,3 +126,29 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect(reverse('index'))
+
+
+def pageinateRange(current, lastpage):
+    firstpage = 1
+    # If 10 or less pages, just return normal page numbers
+    if lastpage <= 10:
+        return list(range(firstpage, lastpage + 1))
+
+    lowerBound = current - 5  # The first number to display
+    upperBound = current + 4  # The last number
+
+    # Check if the lower bound is lower than the first page number
+    if lowerBound < firstpage:
+        # if it is, give an extra "buffer" to the upper bound - always shows 10 numbers
+        upperAdd = firstpage - lowerBound
+        upperBound += upperAdd
+        lowerBound = firstpage
+
+    # Check if the upper bound set exceeds the number of pages
+    if upperBound > lastpage:
+        # if it is, give an extra "buffer" to the lower bound - always shows 10 numbers
+        lowerAdd = lastpage - upperBound
+        lowerBound += lowerAdd
+        upperBound = lastpage
+
+    return list(range(lowerBound,upperBound+1))

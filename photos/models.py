@@ -38,7 +38,6 @@ class Photo(models.Model):
     name = models.CharField(max_length=128)
 
     description = models.TextField(default="", blank=True)
-    category = models.ForeignKey(Category, blank=True, null=True, related_name='Cat')
     categories = models.ManyToManyField(Category, blank=True, related_name='photos')
 
     original = models.CharField(max_length=128, blank=True)

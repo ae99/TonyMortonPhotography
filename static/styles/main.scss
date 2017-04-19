@@ -390,12 +390,9 @@ body {
         }
         padding: 0 0.5rem;
     }
-    #last {
-        padding-right: 2.5rem;
-    }
-    
-    #next {
-        padding-left: 2.5rem;
+    span {
+        padding: 0 0.5rem;
+        cursor: default;
     }
     
 }
