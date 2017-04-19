@@ -17,3 +17,6 @@ class EditPhotoForm(forms.ModelForm):
         model = Photo
         # Exclude no fields, i.e. include all fields.
         exclude = ()
+        widgets = {
+            'categories': forms.CheckboxSelectMultiple()
+        }

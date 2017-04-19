@@ -18,7 +18,7 @@ def index(request, category_slug="all", page_number=1):
         category = None
     else:
         category = get_object_or_404(Category, slug=category_slug)
-        photos_all = Photo.objects.filter(category=category).order_by("id")  # Return Database for specific Category
+        photos_all = category.photos.order_by("id")  # Returns all photos for specific category
     paginator = Paginator(photos_all, 20)  # Paginates all photos into pages of 20
 
     category_list = Category.objects.all()

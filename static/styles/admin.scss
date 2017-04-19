@@ -54,6 +54,27 @@ form {
         border-bottom: 3px solid #CDDC39;
     }
     
+    ul {
+        margin: 0;
+        padding-left: 1rem;
+        li {
+            display: block;
+            list-style: none;
+            label {
+                text-align: left;
+                display: inline-block;
+                height: 1.5rem;
+                input {
+                    display: inline-block;
+                    width: 1rem;
+                    height: 1rem;
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+        }
+    }
+        
     .half {
         width: 50%;
         display: inline-block;
