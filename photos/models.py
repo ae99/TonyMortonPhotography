@@ -44,6 +44,7 @@ class Photo(models.Model):
     source = models.ImageField(upload_to='source')
 
     iso = models.CharField(max_length=128, default="", blank=True)
+    camera = models.CharField(max_length=128, default="", blank=True)
     lens = models.CharField(max_length=128, default="", blank=True)
     focal_length = models.CharField(max_length=128, default="", blank=True)
     exposure_time = models.CharField(max_length=128, default="", blank=True)
@@ -51,16 +52,16 @@ class Photo(models.Model):
     aperture = models.CharField(max_length=128, default="", blank=True)
 
     # Function to make thumbnails, accepts PIL image as input
-    def make_thumb(self, img):
-        img = img.copy()  # Duplicate to avoid modifying original
+    def make_thumb(self):
+        img = Image.open(self.source)
         img.thumbnail([400, 99999], PIL.Image.ANTIALIAS)  # Resize - max [x,y] dimensions
 
         # Save image to media directory, set JPEG compression quality to %55
         img.save(settings.MEDIA_DIR + "/thumb/" + str(self.id) + ".jpg", format="JPEG", quality=55)
 
     # Function to make web acceptable photo
-    def make_web(self, img):
-        img = img.copy()
+    def make_web(self):
+        img = Image.open(self.source)
         watermark = Image.open(settings.STATIC_DIR + '/watermark/watermark.png')  # Open watermark file
 
         # Resize image and watermark to be properly scaled
@@ -75,6 +76,28 @@ class Photo(models.Model):
         img.paste(watermark, (imgBox[2] - margin - watermarkBox[2], imgBox[3] - margin - watermarkBox[3]), watermark)
         img.save(settings.MEDIA_DIR + "/web/" + str(self.id) + ".jpg", format="JPEG", quality=90)
 
+    def get_exif(self):
+        img = Image.open(self.source)
+        try:
+            # Attempt to retrieve "EXIF" Data
+            # 'EXIF' is photo metadata
+            raw_data = img._getexif()
+            if raw_data:
+                # Attempt to retrieve individual fields and set field values
+                try:
+                    self.camera = raw_data[272]
+                    self.iso = raw_data[34855]
+                    self.lens = raw_data[42036]
+                    self.focal_length = raw_data[37386][0]
+                    self.exposure_time = raw_data[33434][1]
+                    self.date_taken = raw_data[36867]
+                    self.aperture = raw_data[33437][0] / raw_data[33437][1]
+
+                except KeyError:
+                    print("EXIF Extraction unsuccessful.")
+        except AttributeError:
+            print("No EXIF Data within file.")
+
     # Checks if image has been changed
     def imageChanged(self):
         if self.id is not None:
@@ -85,39 +108,21 @@ class Photo(models.Model):
 
     # Override default save method
     def save(self, *args, **kwargs):
-        # Open Image Source
-        img = Image.open(self.source)
-
+        # Imaged Changed Flag
         imageChanged = self.imageChanged()
-            # Sets original filename
+
+        # Sets original filename
         if imageChanged:
             self.original = self.source.name
+            self.get_exif()
 
-        # Error trapping
-        try:
-            # Attempt to retrieve "EXIF" Data
-            # 'EXIF' is photo metadata
-            raw_data = img._getexif()
-            if raw_data:
-                # Attempt to retrieve individual fields and set field values
-                try:
-                    self.iso = raw_data[34855]
-                    self.lens = raw_data[42036]
-                    self.focal_length = raw_data[37386][0]
-                    self.exposure_time = raw_data[33434][1]
-                    self.date_taken = raw_data[36867]
-                    self.aperture = raw_data[33437][0] / raw_data[33437][1]
-                except KeyError:
-                    print("EXIF Extraction unsuccessful.")
-        except AttributeError:
-            print("No EXIF Data within file.")
         # Run original save method
         super(Photo, self).save(*args, **kwargs)
 
         # Run submethods to make web and thumbnail versions of image
         if imageChanged:
-            self.make_web(img)
-            self.make_thumb(img)
+            self.make_web()
+            self.make_thumb()
 
     def __str__(self):
         return self.name
