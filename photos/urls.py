@@ -7,11 +7,13 @@ urlpatterns = [
     # Handels calls to '/', sends it to index view to be handeled
     url(r'^$', views.index, name='index'),
     url(r'^gallery/(?P<category_slug>[\w\-]+)/(?P<page_number>[\d]+)/$', views.index, name='index'),
-    
+
     url(r'^new/$', views.newPhoto, name="newPhoto"),
     url(r'^edit/(?P<photo_id>[\d]+)/$', views.editPhoto, name='editPhoto'),
     url(r'^delete/(?P<photo_id>[\d]+)/$', views.deletePhoto, name='deletePhoto'),
+
     url(r'^about/$', views.about, name='about'),
+
     url(r'^login/$', views.user_login, name='login'),
     url(r'^logout/$', views.user_logout, name='logout'),
 

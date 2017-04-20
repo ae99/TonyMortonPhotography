@@ -49,7 +49,6 @@ def index(request, category_slug="all", page_number=1):
     return render(request, 'index.html', context)
 
 
-
 def about(request):
     return render(request, 'about.html')
 
@@ -96,7 +95,6 @@ def deletePhoto(request, photo_id):
     elif request.POST.get('cancel'):
         return redirect(reverse('editPhoto', args=(photo_id,)))
     return render(request, 'deletePhoto.html', {'photo': instance})
-
 
 
 def user_login(request):
@@ -151,4 +149,4 @@ def pageinateRange(current, lastpage):
         lowerBound += lowerAdd
         upperBound = lastpage
 
-    return list(range(lowerBound,upperBound+1))
+    return list(range(lowerBound, upperBound + 1))

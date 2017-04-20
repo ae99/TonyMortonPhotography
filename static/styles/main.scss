@@ -1,4 +1,11 @@
+$accent-color: #77d45b;
+
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Reenie+Beanie');
+
+@font-face {
+    font-family: "Camera-Icons";
+    src: url(/static/camera-icons.ttf);
+}
 
 * {
     box-sizing: border-box;
@@ -33,11 +40,11 @@ header>nav {
     a {
         font-family: 'Lato';
         font-weight: 300;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         margin: 0 1rem;
         color: white;
         text-decoration: none;
-        transition: all 0.5s;
+        transition: color 0.5s;
         &:hover {
             color: #B4B4B4;
         }
@@ -85,11 +92,6 @@ main {
     margin: auto;
 }
 /*http://tympanus.net/codrops/2013/06/18/thumbnailCaption-hover-effects/*/
-
-@font-face {
-	font-family: "Camera-Icons";
-	src: url(/static/camera-icons.ttf);
-}
 
 body {
     color: white;
@@ -195,7 +197,7 @@ body {
     }
 }
 
-.modal {
+.modal {    
     position: fixed;
     width: 100%;
     height: 100%;
@@ -379,21 +381,25 @@ body {
 .pageNumbers {
     width: 100%;
     text-align: center;
-    color: #707070;
     font-weight: 300;
     font-size: 1.25rem;
-    a {
+    
+    a{
         text-decoration: none;
-        color: white;
+        color: darken(white,50);
         &#active {
             border-bottom: 2px solid white;
         }
         padding: 0 0.5rem;
+        
+        &[href] {
+            color: white;
+            &:hover {
+                color: darken(white,20)
+            }
+        }
     }
-    span {
-        padding: 0 0.5rem;
-        cursor: default;
-    }
+    
     
 }
 
@@ -415,7 +421,7 @@ footer {
     a {
         color: #B4B4B4;
         text-decoration: none;
-        transition: all 0.5s;
+        transition: color 0.5s;
         &:hover {
             color: lighten(#B4B4B4, 50);
         }
@@ -434,6 +440,7 @@ footer {
         right: 0;
         a {
             font-weight: 400;
+            color: $accent-color;
         }
     } 
 }
@@ -444,32 +451,25 @@ footer {
 .about_page {
     font-family: 'Lato';
     font-weight: 300;
+    
+    p, ul {
+        color: white;
+        max-width: 800px;
+        margin: 2em auto;
+        padding: 1em;
+    }
+    
+    h1, h3 {
+        color: white;
+        text-align: center;
+        padding: 1em;
+    }
+    
+    img {
+        max-width: 100%;
+        display: inline;
+        float: left;
+        margin: 1rem;
+    }
 }
 
-.about_page p,.about_page ul {
-	color: white;
-	max-width: 800px;
-	margin: 2em auto;
-	padding: 1em;
-}
-.about_page h1 {
-	color: white;
-	text-align: center;
-	padding: 1em;
-}
-.about_page h3 {
-	color: white;
-	text-align: center;
-	padding: 1em;
-}
-
-.about_page li {
-	
-}
-
-.about_page img {
-	max-width: 100%;
-	display: inline;
-	float: left;
-	margin: 1rem;
-}

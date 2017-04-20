@@ -41,35 +41,18 @@
     </section>
     <div class="pageNumbers">
         {% if show_nav %}
-
-
-            {% if photos.has_previous %}
-                <a href="{% url 'index' page_number=1 category_slug=category_slug %}" title="First Page">&lt&lt</a>
-                <a href="{% url 'index' page_number=photos.previous_page_number category_slug=category_slug %}" title="Previous Page">&lt</a>
-            {% else %}
-                <span title="First Page">&lt&lt</span>
-                <span title="Previous Page">&lt</span>
-            {% endif %} 
+            <a {% if photos.has_previous %}href="{% url 'index' page_number=1 category_slug=category_slug %}"{% endif %}
+            title="First Page">&lt&lt</a>
+            <a {% if photos.has_previous %}href="{% url 'index' page_number=photos.previous_page_number category_slug=category_slug %}"{% endif %}
+            title="Previous Page">&lt</a>
 
              {% for i in page_list %}
-                {% if photos.number == i %}
-                    <a id="active" href="{% url 'index' page_number=i category_slug=category_slug %}">{{ i }}</a>
-                {% else %}
-                    <a href="{% url 'index' page_number=i category_slug=category_slug %}">{{ i }}</a> 
-                {% endif %}
+                <a {% if photos.number == i %}id="active"{% endif %} 
+                href="{% url 'index' page_number=i category_slug=category_slug %}">{{ i }}</a>
             {% endfor %}
 
-
-            {% if photos.has_next %}
-                <a href="{% url 'index' page_number=photos.next_page_number category_slug=category_slug %}" title="Next Page">&gt</a>
-                <a href="{% url 'index' page_number=num_pages category_slug=category_slug %}" title="Last Page">&gt&gt</a>
-            {% else %}
-                <span title="Next Page">&gt</span>
-                <span title="Last Page">&gt&gt</span>
-            {% endif %}
-
-
-
+            <a {% if photos.has_next %}href="{% url 'index' page_number=photos.next_page_number category_slug=category_slug %}"{% endif %} title="Next Page">&gt</a>
+            <a {% if photos.has_next %}href="{% url 'index' page_number=num_pages category_slug=category_slug %}"{% endif %} title="Last Page">&gt&gt</a>
         {% endif %}
     </div>
 {% endblock %}
