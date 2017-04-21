@@ -53,7 +53,7 @@ class Photo(models.Model):
     # Function to make thumbnails, accepts PIL image as input
     def make_thumb(self):
         img = Image.open(self.source)
-        img.thumbnail([500, 99999], PIL.Image.ANTIALIAS)  # Resize - max [x,y] dimensions
+        img.thumbnail([400, 99999], PIL.Image.ANTIALIAS)  # Resize - max [x,y] dimensions
 
         # Save image to media directory, set JPEG compression quality to %55
         img.save(settings.MEDIA_DIR + "/thumb/" + str(self.id) + ".jpg", format="JPEG", quality=55)
