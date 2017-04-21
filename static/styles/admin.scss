@@ -9,18 +9,15 @@ body {
 }
 
 main {
-    width: 100%;
     padding-top: 5rem;
     background: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
 }
 
 form {
-    max-width: 30%;
+    margin: 0 auto;
+    max-width: 40%;
     min-width: 15rem;
-    flex: 1;
     p {
     }
     label {

@@ -10,23 +10,20 @@ body {
 
 /* line 11, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
 main {
-  width: 100%;
   padding-top: 5rem;
   background: none;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
+  justify-content: space-between; }
 
-/* line 20, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+/* line 17, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
 form {
-  max-width: 30%;
-  min-width: 15rem;
-  flex: 1; }
-  /* line 26, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+  margin: 0 auto;
+  max-width: 40%;
+  min-width: 15rem; }
+  /* line 23, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
   form label {
     display: inline-block;
     width: 100%; }
-  /* line 30, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+  /* line 27, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
   form input, form textarea, form .delete {
     box-sizing: border-box;
     display: inline-block;
@@ -34,47 +31,47 @@ form {
     height: 2rem;
     min-width: 10rem;
     font-size: 1rem; }
-  /* line 39, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+  /* line 36, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
   form img {
     width: 100%; }
-  /* line 43, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+  /* line 40, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
   form a {
     text-decoration: none; }
-  /* line 47, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+  /* line 44, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
   form textarea {
     min-height: 5rem; }
-  /* line 51, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+  /* line 48, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
   form p input:focus {
     outline: none;
     border: none;
     border-bottom: 3px solid #CDDC39; }
-  /* line 57, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+  /* line 54, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
   form ul {
     margin: 0;
     padding-left: 1rem; }
-    /* line 60, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+    /* line 57, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
     form ul li {
       display: block;
       list-style: none; }
-      /* line 63, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+      /* line 60, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
       form ul li label {
         text-align: left;
         display: inline-block;
         height: 1.5rem; }
-        /* line 67, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+        /* line 64, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
         form ul li label input {
           display: inline-block;
           width: 1rem;
           height: 1rem;
           padding: 0;
           margin: 0; }
-  /* line 78, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+  /* line 75, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
   form .half {
     width: 50%;
     display: inline-block;
     margin: 0;
     float: left; }
-  /* line 85, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+  /* line 82, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
   form a.delete {
     border-radius: 0;
     outline: none;
@@ -83,13 +80,13 @@ form {
     text-align: center;
     line-height: 2rem;
     color: white; }
-  /* line 95, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+  /* line 92, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
   form input.submit {
     border-radius: 0;
     outline: none;
     border: none;
     background-color: #C0CA33; }
-    /* line 100, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
+    /* line 97, /Users/alexanderedwards/TonyMortonPhotography/static/styles/admin.scss */
     form input.submit:focus {
       background-color: #AFB42B; }
 

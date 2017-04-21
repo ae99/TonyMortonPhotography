@@ -1,33 +1,20 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block header_block %}
-
-<section class="full">
-    <h1>Tony Morton</h1>
-    <div class="fadein">
-    </div>
-    <div class="gradient"></div>
-</section>
-{% endblock %}
-
 {% block body_block %}
     <div class="categories">
-        {% if category is None %}
-            <span>All</span>
-        {% else %}
-            <span>{{category}}</span>
-        {% endif %}
-        <div class="items">
+        {% if category is None %}Latest{% else %}{{category}}{% endif %}
+        <img src="{% static 'right-arrow.svg' %}">
+        <ul>
             {% if category != None %}
-                <a href="{% url 'index' %}">All</a>
+                <a href="{% url 'index' %}"><li>Latest</li></a>
             {% endif %}
             {% for cat in categories %}
                 {% if cat != category %} {# If Category is not current page #}
-                    <a href="{% url 'index' category_slug=cat.slug page_number=1 %}">{{cat}}</a>
+                    <a href="{% url 'index' category_slug=cat.slug page_number=1 %}"><li>{{cat}}</li></a>
                 {% endif %}
             {% endfor %}
-        </div>
+        </ul>
     </div>
 
 

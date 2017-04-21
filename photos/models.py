@@ -45,16 +45,15 @@ class Photo(models.Model):
 
     iso = models.CharField(max_length=128, default="", blank=True)
     camera = models.CharField(max_length=128, default="", blank=True)
-    lens = models.CharField(max_length=128, default="", blank=True)
     focal_length = models.CharField(max_length=128, default="", blank=True)
     exposure_time = models.CharField(max_length=128, default="", blank=True)
     date_taken = models.CharField(max_length=128, default="", blank=True)
     aperture = models.CharField(max_length=128, default="", blank=True)
-
+    lens = models.CharField(max_length=128, default="", blank=True)
     # Function to make thumbnails, accepts PIL image as input
     def make_thumb(self):
         img = Image.open(self.source)
-        img.thumbnail([400, 99999], PIL.Image.ANTIALIAS)  # Resize - max [x,y] dimensions
+        img.thumbnail([500, 99999], PIL.Image.ANTIALIAS)  # Resize - max [x,y] dimensions
 
         # Save image to media directory, set JPEG compression quality to %55
         img.save(settings.MEDIA_DIR + "/thumb/" + str(self.id) + ".jpg", format="JPEG", quality=55)
@@ -87,11 +86,11 @@ class Photo(models.Model):
                 try:
                     self.camera = raw_data[272]
                     self.iso = raw_data[34855]
-                    self.lens = raw_data[42036]
                     self.focal_length = raw_data[37386][0]
                     self.exposure_time = raw_data[33434][1]
                     self.date_taken = raw_data[36867]
                     self.aperture = raw_data[33437][0] / raw_data[33437][1]
+                    self.lens = raw_data[42036]
 
                 except KeyError:
                     print("EXIF Extraction unsuccessful.")

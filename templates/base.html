@@ -28,7 +28,15 @@
     </head>
     <body>
         <header>
-            {% block header_nav_block %}
+            
+            <div class="top">
+                <img src="{% static '/photos/tonySquare.jpg'%}"/>
+            
+                <h1>Tony Morton</h1>
+                <h3>Photography</h3>
+
+            </div>
+            
             <nav>
                 <a href="{% url 'about' %}">About</a>
                 <a href="{% url 'index' %}">Home</a>
@@ -36,13 +44,11 @@
                 {% if user.is_authenticated %}
                 <a href="{% url 'newPhoto' %}">New Photo</a>
                 {% endif %}
-                <a style="color:red"><strong>Site Under Development v0.1.4</strong></a>
             </nav>
-            {% endblock %}
-
-            {% block header_block %}
+            
+            <div class="social">
                 
-            {% endblock %}
+            </div>
         </header>
         
         
@@ -51,10 +57,9 @@
         {% block body_block %}
             No Content Found
         {% endblock %}
-        </main>
-        
-        {% block footer_block %}
-        <footer>
+            
+            
+                    <footer>
             <nav>
                 <a href="{% url 'index' %}">Home</a>
                 <a href="{% url 'about' %}">About</a>
@@ -74,6 +79,10 @@
                 Website by <a href="http://alexedwards.xyz">Alex Edwards</a>.
             </span>
         </footer>
+
+        </main>
+        
+        {% block footer_block %}
         {% endblock %}
     </body>
     <script src="{% static '/scripts/main.js' %}"></script>

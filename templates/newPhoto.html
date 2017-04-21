@@ -6,6 +6,7 @@
 
 
 {% block body_block %}
+    <div class="FlexPusher"></div>
     <form class="new" action="{% url 'newPhoto' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}

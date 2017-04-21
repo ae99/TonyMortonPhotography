@@ -37,7 +37,10 @@ function toggle(){
 }
 
 savvior.init('.gallery', {
-  "screen and (max-width: 420px)": { columns: 2 },
-  "screen and (min-width: 420px) and (max-width: 950px)": { columns: 3 },
-  "screen and (min-width: 950px)": { columns: 4 },
+    "screen and (max-width: 899px)": { columns: 2 },
+    "screen and (min-width: 900px) and (max-width: 1399px)": { columns: 3 },
+    "screen and (min-width: 1400px) and (max-width: 1999px)": { columns: 4 },
+    "screen and (min-width: 2000px) and (max-width: 2499px)": { columns: 5 },
+    "screen and (min-width: 2500px)": { columns: 6 },
+    
 });
