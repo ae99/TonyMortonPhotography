@@ -45,6 +45,10 @@ def index(request, category_slug="all", page_number=1):
         'show_nav': show_nav
     }
 
+    request.session['page'] = photos.number
+    request.session['category'] = category_slug
+    
+
     # Send to index.html template with context of photos, category etc.
     return render(request, 'index.html', context)
 
@@ -79,7 +83,12 @@ def editPhoto(request, photo_id):
         form = EditPhotoForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect(reverse('index'))
+
+            # Gets session data - returns user to page they were before entering the form
+            page = request.session.get('page','1') 
+            category = request.session.get('category','all')
+
+            return redirect(reverse('index', args=(category,page)))
     else:
         form = EditPhotoForm(instance=instance)
 
