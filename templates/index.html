@@ -28,18 +28,15 @@
     </section>
     <div class="pageNumbers">
         {% if show_nav %}
-            <a {% if photos.has_previous %}href="{% url 'index' page_number=1 category_slug=category_slug %}"{% endif %}
-            title="First Page">&lt&lt</a>
             <a {% if photos.has_previous %}href="{% url 'index' page_number=photos.previous_page_number category_slug=category_slug %}"{% endif %}
-            title="Previous Page">&lt</a>
+            title="Previous Page">Prev</a>
 
              {% for i in page_list %}
-                <a {% if photos.number == i %}id="active"{% endif %} 
+                <a class="number" {% if photos.number == i %}id="active"{% endif %} 
                 href="{% url 'index' page_number=i category_slug=category_slug %}">{{ i }}</a>
             {% endfor %}
 
-            <a {% if photos.has_next %}href="{% url 'index' page_number=photos.next_page_number category_slug=category_slug %}"{% endif %} title="Next Page">&gt</a>
-            <a {% if photos.has_next %}href="{% url 'index' page_number=num_pages category_slug=category_slug %}"{% endif %} title="Last Page">&gt&gt</a>
+            <a {% if photos.has_next %}href="{% url 'index' page_number=photos.next_page_number category_slug=category_slug %}"{% endif %} title="Next Page">Next</a>
         {% endif %}
     </div>
 {% endblock %}

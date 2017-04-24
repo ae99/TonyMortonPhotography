@@ -38,10 +38,9 @@ header {
     
     .top {
         img {
-            width: 10rem;
-            height: 10rem;
+            max-width: 62%;
             display: block;
-            margin: 1rem 3rem;
+            margin: 1rem 19%;
             border-radius: 100%;
         }
 
@@ -76,6 +75,49 @@ header {
             display: block;
         }
     }
+    
+    @media (max-width: 800px){
+        width: 12rem;
+    }
+    
+    @media (max-width: 600px){
+        position: inherit;
+        width: 100%;
+        height: auto;
+        .social {
+            display: none;
+        }
+        nav a {
+            display: inline-block;
+        }
+        
+        .top {
+            img {
+                width: 5rem;
+                margin: 1rem;
+                display: inline-block;
+            }
+            h1 {
+                display: inline-block;
+                text-align: left;
+                vertical-align: top;
+                font-size: 2rem;
+                line-height: 7rem;
+                margin: 0;
+
+            }
+            h3 {
+                display: none;
+            }
+
+        }
+    }
+    
+    @media (max-width: 374px){
+        .top h1 {
+            font-size: 1.5rem;
+        }
+    }
 }
 
 main {
@@ -85,6 +127,14 @@ main {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    
+    @media (max-width: 800px){
+        margin-left: 12rem;
+    }
+    
+    @media (max-width: 600px){
+        margin-left: 0;
+    }
 }
 /*http://tympanus.net/codrops/2013/06/18/thumbnailCaption-hover-effects/*/
 
@@ -187,15 +237,19 @@ body {
             text-align: center;
             text-transform: uppercase;
         }
-        &:hover {
-            h3 {
-                transform: translateY(0);
-                transition: transform 0.4s;
+        @media (min-width: 800px){
+            &:hover {
+                h3 {
+                    transform: translateY(0);
+                    transition: transform 0.4s;
+                }
+                img {
+                    transform: translateY(-2rem)
+                }
             }
-            img {
-                transform: translateY(-2rem)
-            }
+
         }
+
     }
 }
 
@@ -388,7 +442,7 @@ body {
     
     a{
         text-decoration: none;
-        color: white;
+        color: darken(white,20);
         &#active {
             border-bottom: 2px solid darken(white,50);
         }
@@ -399,6 +453,12 @@ body {
             &:hover {
                 color: darken(white,20);
             }
+        }
+    }
+    
+    @media (max-width: 600px){
+        a.number {
+            display: none;
         }
     }
     
@@ -446,7 +506,26 @@ footer {
             font-weight: 400;
             color: $accent-color;
         }
-    } 
+    }
+    
+    @media (max-width: 1050px) {
+        nav {
+            display: none;
+        }
+        
+        #center {
+            margin: 0;
+            float: left;
+        }
+    }
+    
+    @media (max-width: 700px) {
+        #right, #center {
+            margin-bottom: 1rem;
+            width: 100%;
+            text-align: center;
+        }   
+    }
 }
 
 

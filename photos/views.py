@@ -38,7 +38,6 @@ def index(request, category_slug="all", page_number=1):
     context = {
         'photos': photos,
         'page_list': page_list,
-        'num_pages': paginator.num_pages,
         'category_slug': category_slug,  # Different from category - may be all
         'category': category,
         'categories': category_list,
