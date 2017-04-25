@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block head_block %}
+    <link rel="stylesheet" type="text/css" href="{% static "/styles/admin.css" %}" />
+{% endblock %}
+
+
+{% block body_block %}
+    <form class="edit" action="{% url 'categories' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        <table style="width: 100%;">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th style="width: 3rem;">
+                Delete
+            </th>
+        </tr>
+        {% for form in formset %}
+            <tr>
+                <td>{{ form.name }}</td>
+            {{ form.id }}
+                <td>{{ form.DELETE }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        <input class="submit" type="submit" name="submit" value="Submit" />
+    </form>
+{% endblock %}

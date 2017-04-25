@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Login Redirects
-LOGIN_URL = '/photos/login/'
+LOGIN_URL = '/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/

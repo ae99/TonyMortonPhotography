@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^edit/(?P<photo_id>[\d]+)/$', views.editPhoto, name='editPhoto'),
     url(r'^delete/(?P<photo_id>[\d]+)/$', views.deletePhoto, name='deletePhoto'),
 
+    url(r'^categories/$', views.categories, name="categories"),
+
     url(r'^about/$', views.about, name='about'),
 
     url(r'^login/$', views.user_login, name='login'),

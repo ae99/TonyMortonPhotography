@@ -1,6 +1,9 @@
 # Import required files
 from django import forms
-from photos.models import Photo
+from django.forms import modelformset_factory
+
+
+from photos.models import Photo, Category
 
 
 class NewPhotoForm(forms.ModelForm):
@@ -20,3 +23,19 @@ class EditPhotoForm(forms.ModelForm):
         widgets = {
             'categories': forms.CheckboxSelectMultiple()
         }
+
+
+class CategoryForm(forms.ModelForm):
+    name = forms.CharField(
+        max_length=128,
+        widget=forms.TextInput(attrs={
+            'placeholder': 'New Category',
+        })
+    )
+
+    class Meta:
+        model = Category
+        fields = ('name',)
+
+
+CategoryFormSet = modelformset_factory(Category, form=CategoryForm, can_delete=True)

@@ -7,7 +7,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from photos.models import Category, Photo
 
-from photos.forms import NewPhotoForm, EditPhotoForm
+from photos.forms import NewPhotoForm, EditPhotoForm, CategoryFormSet
 
 
 # View for index
@@ -84,10 +84,10 @@ def editPhoto(request, photo_id):
             form.save()
 
             # Gets session data - returns user to page they were before entering the form
-            page = request.session.get('page','1') 
-            category = request.session.get('category','all')
+            page = request.session.get('page', '1')
+            category = request.session.get('category', 'all')
 
-            return redirect(reverse('index', args=(category,page)))
+            return redirect(reverse('index', args=(category, page)))
     else:
         form = EditPhotoForm(instance=instance)
 
@@ -103,6 +103,19 @@ def deletePhoto(request, photo_id):
     elif request.POST.get('cancel'):
         return redirect(reverse('editPhoto', args=(photo_id,)))
     return render(request, 'deletePhoto.html', {'photo': instance})
+
+@login_required
+def categories(request):
+    if request.method == 'POST':
+        formset = CategoryFormSet(request.POST)
+        if formset.is_valid():
+            formset.save()
+        return redirect(reverse('categories'))
+    else:
+        formset = CategoryFormSet()
+        print(formset)
+    return render(request, 'categories.html',{'formset':formset})
+
 
 
 def user_login(request):
