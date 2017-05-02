@@ -5,14 +5,15 @@
     <div class="sidebar">
         <h2>{{photo.name}}</h2>
         <p>{{photo.description}}</p>
-        <p><i class="camera_icon icon_camera"></i>{{photo.camera}}
-            <span>w/{{photo.lens}}</span>
-        </p>
-        <p><i class="camera_icon icon_focal_length"></i>{{photo.focal_length}}</p>
-        <p><i class="camera_icon icon_aperture"></i> ƒ/{{photo.aperture}}</p>
-        <p><i class="camera_icon icon_exposure_time"></i> {{photo.exposure_time}}</p>
-        <p><i class="camera_icon icon_iso"></i>{{photo.iso}}</p>
-
+        {% if photo.camera %}
+            <p><i class="camera_icon icon_camera"></i>{{photo.camera}}
+                <span>w/{{photo.lens}}</span>
+            </p>
+            <p><i class="camera_icon icon_focal_length"></i>{{photo.focal_length}}mm</p>
+            <p><i class="camera_icon icon_aperture"></i> ƒ/{{photo.aperture}}</p>
+            <p><i class="camera_icon icon_exposure_time"></i> {{photo.exposure_time}}</p>
+            <p><i class="camera_icon icon_iso"></i>{{photo.iso}}</p>
+        {% endif %}
         <div id="toggle" onclick="toggle();"><img src="{% static 'menuArrow.svg' %}" /></div>
 
         {% if user.is_authenticated %}
