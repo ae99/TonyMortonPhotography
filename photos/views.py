@@ -10,8 +10,38 @@ from photos.models import Category, Photo
 from photos.forms import NewPhotoForm, EditPhotoForm, CategoryFormSet
 
 
+def get_cats(categoryList,depth):
+    newList = []
+
+    for category in categoryList:
+        tempDict = {
+            'category': category,
+            'depth': depth
+        }
+
+        children = list(Category.objects.all().filter(parent=category))
+        tempDict['children'] = get_cats(children, depth + 1)
+
+        newList.append(tempDict)
+
+    return newList
+
+
+def flattern(aList):
+    category_list = []
+    for item in aList:
+        category_list.append({
+            'category': item['category'],
+            'depth': item['depth']
+        })
+
+        category_list += flattern(item['children'])
+
+    return category_list
+
+
 # View for index
-def index(request, category_slug="all", page_number=1):
+def index(request, category_slug = "all", page_number = 1):
     # If category is defined - see category view
     if category_slug == "all":
         photos_all = Photo.objects.all().order_by("-id")  # Return entire Database in reverse chronological order
@@ -21,7 +51,10 @@ def index(request, category_slug="all", page_number=1):
         photos_all = category.photos.order_by("id")  # Returns all photos for specific category
     paginator = Paginator(photos_all, 20)  # Paginates all photos into pages of 20
 
-    category_list = Category.objects.all()
+    root_categories = list(Category.objects.all().filter(parent=None))
+    category_list = flattern(get_cats(root_categories, 1))
+
+    # print(category_list[0])
 
     # Error trapping, set pages
     try:

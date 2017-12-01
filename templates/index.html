@@ -2,16 +2,20 @@
 {% load staticfiles %}
 
 {% block body_block %}
+
+
     <div class="categories">
         {% if category is None %}Latest{% else %}{{category}}{% endif %}
         <img src="{% static 'right-arrow.svg' %}">
         <ul>
             {% if category != None %}
-                <a href="{% url 'index' %}"><li>Latest</li></a>
+                <a href="{% url 'index' %}"><li>Contents</li></a>
             {% endif %}
             {% for cat in categories %}
-                {% if cat != category %} {# If Category is not current page #}
-                    <a href="{% url 'index' category_slug=cat.slug page_number=1 %}"><li>{{cat}}</li></a>
+                {% if cat.category != category %} {# If Category is not current page #}
+                    <a href="{% url 'index' category_slug=cat.category.slug page_number=1 %}">
+                        <li style="padding-left: {{cat.depth}}rem">{{cat.category}}</li>
+                    </a>
                 {% endif %}
             {% endfor %}
         </ul>

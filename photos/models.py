@@ -17,6 +17,7 @@ class Category(models.Model):
     # Defining Fields
     name = models.CharField(max_length=128, unique=True)
     slug = models.SlugField(unique=True)
+    parent = models.ForeignKey('self', blank=True, null=True)
 
     # Override default save method to "slugify" name
     # "Slugifing" makes string url-safe

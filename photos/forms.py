@@ -35,7 +35,7 @@ class CategoryForm(forms.ModelForm):
 
     class Meta:
         model = Category
-        fields = ('name',)
+        fields = ('name', 'parent')
 
 
 CategoryFormSet = modelformset_factory(Category, form=CategoryForm, can_delete=True)
