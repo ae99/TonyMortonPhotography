@@ -5,18 +5,16 @@
 
 
     <div class="categories">
-        {% if category is None %}Latest{% else %}{{category}}{% endif %}
+        {% if category is None %}Contents{% else %}{{category}}{% endif %}
         <img src="{% static 'right-arrow.svg' %}">
         <ul>
             {% if category != None %}
                 <a href="{% url 'index' %}"><li>Contents</li></a>
             {% endif %}
             {% for cat in categories %}
-                {% if cat.category != category %} {# If Category is not current page #}
-                    <a href="{% url 'index' category_slug=cat.category.slug page_number=1 %}">
-                        <li style="padding-left: {{cat.depth}}rem">{{cat.category}}</li>
-                    </a>
-                {% endif %}
+                <a href="{% url 'index' category_slug=cat.category.slug page_number=1 %}">
+                    <li style="padding-left: calc(2 * {{cat.depth}}rem - 1rem)">{{cat.category}}</li>
+                </a>
             {% endfor %}
         </ul>
     </div>
