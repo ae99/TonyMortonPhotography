@@ -195,7 +195,9 @@ body {
 .gallery {
     flex: 1;
     
-    overflow: auto;
+    
+//    Removed the following due to glitchy jumping. If more errors appear, uncomment?
+//    overflow: auto;
     
     .column { float: left; }
     .size-1of2 { width: 50%; }
